@@ -16,7 +16,6 @@
     "tests"
   ],
   "dependencies": {
-    "normalize-scss": "^3.0.3",
-    "autosize": "^4.0.0"
+    "normalize-scss": "^3.0.3"
   }
 }
