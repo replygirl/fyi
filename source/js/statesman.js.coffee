@@ -22,14 +22,13 @@ qs = ((a) ->
 statesman by imogen
 ###
 config =
-  base_url: "https://imogen.fyi/"
   html_dir: "html"
   home:
     root: "page"
     target: "about"
   container: $("body")
 generateSlug = (key, value) ->
-  return "/?" + key + "=" + value
+  return "?" + key + "=" + value
 generatePath = (root, target) ->
   return [config.html_dir, root, target].join("/") + ".html"
 renderState = (root, target, apply_state = false) ->
@@ -37,11 +36,11 @@ renderState = (root, target, apply_state = false) ->
   container.addClass "loading"
   $.get generatePath(root, target), (content) ->
     $("[data-link-root]:not([data-link-target])")
-      .each -> this.addClass "hidden"
-      .filter "[data-link-root=" + root + "]"
+      .each -> $(this).addClass "hidden"
+      .filter "[data-link-root='" + root + "']"
       .on "transitionend", ->
         container.removeClass "loading"
-        this
+        $(this)
           .html content
           .removeClass "hidden"
           .off "transitionend", false
@@ -57,8 +56,10 @@ renderStateFromURL = ->
 initializeStateFromURL = ->
   renderStateFromURL()
   home = config.home
-  selector = "[data-link-root=" + home.root + "]:not([data-link-target])"
-  $(selector).load generatePath home.root, home.target
+  target = qs[home.root]
+  unless target and target != home.target
+    base = $("[data-link-root='" + home.root + "']:not([data-link-target]):empty")
+    base.load generatePath home.root, home.target
 applyState = (root, target) ->
   renderState(root, target)
   home = config.home
@@ -66,7 +67,7 @@ applyState = (root, target) ->
     clearState()
   else
     renderState(root, target)
-    history.pushState null, null, generateSlug()
+    history.pushState null, null, generateSlug root, target
 clearState = ->
   $("[data-link-root]:not([data-link-target])").addClass "hidden"
   history.pushState null, null, "/"
@@ -74,9 +75,9 @@ $(document).ready ->
   initializeStateFromURL()
   $(window).on "popstate", ->
     renderStateFromURL()
-  $("[data-link-root][data-link-target]") .on "click", ->
-    root = this.attr "data-link-root"
-    target = this.attr "data-link-target"
+  $("[data-link-root][data-link-target]").on "click", ->
+    root = $(this).attr "data-link-root"
+    target = $(this).attr "data-link-target"
     applyState root, target
   $("[data-io-role='close']").on "click", ->
     clearState()
