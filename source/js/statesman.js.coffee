@@ -31,7 +31,7 @@ generateSlug = (key, value) ->
   return "?" + key + "=" + value
 generatePath = (root, target) ->
   return [config.html_dir, root, target].join("/") + ".html"
-renderState = (root, target) ->
+renderState = (root, target, apply_state = false) ->
   container = config.container
   container.addClass "loading"
   $.get generatePath(root, target), (content) ->
