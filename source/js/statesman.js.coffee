@@ -3,20 +3,12 @@ requires jquery
 ###
 
 ###
-qs by BrunoLM
-https://stackoverflow.com/a/3855394/2467656
+getParameterByName by James Padolsey & Andy Earnshaw
+https://stackoverflow.com/a/5158301/2467656
 ###
-qs = ((a) ->
-  return {} if a == ''
-  b = {}
-  for i in a
-    p = i.split '=', 2
-    if p.length == 1
-      b[p[0]] = ''
-    else
-      b[p[0]] = decodeURIComponent p[1].replace(/\+/g, ' ')
-  b
-)(window.location.search.substr(1).split('&'))
+getParam = (name) ->
+  match = RegExp('[?&]' + name + '=([^&]*)').exec(window.location.search)
+  match and decodeURIComponent(match[1].replace(/\+/g, ' '))
 
 ###
 statesman by imogen
@@ -31,50 +23,79 @@ generateSlug = (key, value) ->
   return "?" + key + "=" + value
 generatePath = (root, target) ->
   return [config.html_dir, root, target].join("/") + ".html"
-renderState = (root, target, apply_state = false) ->
-  container = config.container
-  container.addClass "loading"
-  $.get generatePath(root, target), (content) ->
-    $("[data-link-root]:not([data-link-target])")
-      .each ->
-        $(this).addClass "hidden"
-      .filter "[data-link-root='" + root + "']"
-      .on "transitionend", ->
-        container.removeClass "loading"
-        $(this)
-          .html content
-          .removeClass "hidden"
-          .off "transitionend", false
-renderStateFromURL = ->
-  root = false
-  target = false
-  $("[data-link-root]:not([data-link-target])").each ->
-    root = $(this).attr "data-link-root"
-    return true unless root
-    target = qs[root]
-    return false if target
-  if target
-    renderState(root, target)
-  else
-    renderState(config.home.root, config.home.target)
+clearState = -> history.pushState null, null, "/"
 applyState = (root, target) ->
-  renderState(root, target)
   home = config.home
   if root == home.root and target == home.target
     clearState()
   else
-    renderState(root, target)
     history.pushState null, null, generateSlug root, target
-clearState = ->
-  $("[data-link-root]:not([data-link-target])").addClass "hidden"
-  history.pushState null, null, "/"
-$(document).ready ->
+renderState = (root, target, apply_state = false) ->
+  container = config.container
+  container
+    .addClass "loading"
+    .on "transitionend", ->
+      container.off "transitionend"
+      home = config.home
+      if root == home.root
+        $("[data-link-target]").removeClass "disabled"
+      else
+        $("[data-link-root!='" + home.root + "'][data-link-target]").removeClass "disabled"
+      $("[data-link-root='" + root + "'][data-link-target='" + target + "']").addClass "disabled"
+      $.get generatePath(root, target), (content) ->
+        roots = "[data-link-root]:not([data-link-target])"
+        $(roots).each ->
+          if $(this).attr("data-link-root") != home.root or root == home.root
+            $(this).addClass "hidden"
+          else
+            $(this).addClass "obscured"
+        container
+          .removeClass "loading"
+          .on "transitionend", roots, ->
+            container.off "transitionend", roots
+            base = $("[data-link-root='" + root + "']:not([data-link-target])")
+            base.html content
+            show = -> base.removeClass "hidden obscured"
+            setTimeout show, 1
+            applyState(root, target) if apply_state
+renderStateFromURL = ->
+  root = null
+  target = null
+  $("[data-link-root]:not([data-link-target])").each ->
+    root = $(this).attr "data-link-root"
+    return true unless root
+    target = getParam root
+    return false if target
+  if target?
+    renderState root, target
+  else
+    renderState config.home.root, config.home.target
+initializeStateFromURL = ->
   renderStateFromURL()
+  home = config.home
+  unless getParam(home.root)?
+    base = $("[data-link-root=" + home.root + "]:not([data-link-target])")
+    $.get generatePath(home.root, home.target), (content) ->
+      initialize = ->
+        base.addClass "hidden"
+        populate = ->
+          base.html content
+          show = -> base.removeClass "hidden"
+          setTimeout show, 1
+        setTimeout populate, 500
+      setTimeout initialize, 500
+$(document).ready ->
+  initializeStateFromURL()
   $(window).on "popstate", ->
     renderStateFromURL()
   $("[data-link-root][data-link-target]").on "click", ->
     root = $(this).attr "data-link-root"
     target = $(this).attr "data-link-target"
-    applyState root, target
-  $("[data-io-role='close']").on "click", ->
-    clearState()
+    renderState root, target, true
+  config.container.on "click", "[data-io-role='close']", ->
+    $(this).closest("[data-link-root]").addClass "hidden"
+    root = config.home.root
+    $("[data-link-root='" + root + "']:not([data-link-target])").removeClass "obscured"
+    $("[data-link-root!='" + root + "'][data-link-target]").removeClass "disabled"
+    target = $("[data-link-root='" + root + "'][data-link-target].disabled").attr "data-link-target"
+    history.pushState null, null, generateSlug root, target

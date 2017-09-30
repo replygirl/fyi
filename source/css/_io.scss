@@ -35,7 +35,7 @@ $base-time: 150ms;
 .io-color-blue { color: $color-blue; }
 .io-color-white { color: $color-white; }
 .io-color-black { color: $color-black; }
-.io-inactive { opacity: $alpha-inactive; }
+.io-hoverable { opacity: $alpha-inactive; }
 .io-background-color-red { background-color: $color-red; }
 .io-background-color-green { background-color: $color-green; }
 .io-background-color-blue { background-color: $color-blue; }
@@ -83,6 +83,18 @@ $breakpoint: inspect(screen and (min-width: $breakpoint-width));
       opacity: 0;
     }
   }
+  .io-container::after,
+  &::after {
+    content: "";
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: -($base-unit / 2);
+    height: $base-unit / 2;
+    background-color: $color-blue;
+    animation: progress $base-time*12 ease-in-out infinite;
+    transition: bottom $base-time*2;
+  }
   .io-container.loading::after,
   &.loading::after {
     content: "";
@@ -92,19 +104,6 @@ $breakpoint: inspect(screen and (min-width: $breakpoint-width));
     bottom: 0;
     height: $base-unit / 2;
     background-color: $color-blue;
-    animation: progress $base-time*12 ease-in-out infinite;
-    transition: bottom $base-time*2;
-  }
-  .io-container:not(.loading)::after,
-  &:not(.loading)::after {
-    content: "";
-    position: fixed;
-    left: 0;
-    right: 0;
-    bottom: -($base-unit / 2);
-    height: $base-unit / 2;
-    background-color: $color-blue;
-    animation: progress $base-time*12 ease-in-out infinite;
     transition: bottom $base-time*2;
   }
   //components
@@ -150,13 +149,12 @@ $breakpoint: inspect(screen and (min-width: $breakpoint-width));
     max-width: 100%;
     padding: $base-unit * 2;
     opacity: 1;
-    transition: opacity 225ms;
+    transition: opacity $base-time*2;
     @media #{$breakpoint} {
       padding: $base-unit*2 + $opt-unit
     }
-    &.hidden {
-      opacity: 0;
-    }
+    &.obscured { opacity: 0.99; }
+    &.hidden { opacity: 0; }
     > *:first-child {
       margin-top: -$base-unit;
       @media #{$breakpoint} {
@@ -198,20 +196,18 @@ $breakpoint: inspect(screen and (min-width: $breakpoint-width));
       > * {
         transform: translateY($base-unit*8) scale(0.95);
         transition: transform $base-time*2, border-radius $base-time*2.5, opacity $base-time*2;
-        border-radius: 320px;
-        opacity: 0;
         transition-timing-function: ease-in;
+        border-radius: $base-unit*6;
+        opacity: 0;
       }
       ~ * {
         filter: blur(0);
-        transition: filter $base-time*2;
-        transition-timing-function: ease-in;
+        transition: filter $base-time*2 ease-in, opacity $base-time*2;
       }
     }
-    ~ * {
+    &:not(.hidden) ~ * {
       filter: blur(6px);
-      transition: filter $base-time*2;
-      transition-timing-function: ease-out;
+      transition: filter $base-time*2 ease-out, opacity $base-time*2;
     }
   }
   h1, h2, h3, h4, h5, h6 {
@@ -239,6 +235,14 @@ $breakpoint: inspect(screen and (min-width: $breakpoint-width));
     }
     &:hover {
       opacity: 1;
+    }
+    &.disabled {
+      pointer-events: none;
+			cursor: not-allowed;
+      opacity: $alpha-disabled;
+      &.io-hoverable {
+        opacity: 1;
+      }
     }
   }
   form,
