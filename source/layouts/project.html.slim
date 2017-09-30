@@ -8,7 +8,7 @@ div style="background-color:'#{colors.bg}'; color:'#{colors.text}'"
   main
     section == yield
     - unless artifacts.nil? # || artifacts.empty?
-      section.tab-switcher
+      section.io-tab-switcher
         header
           - artifacts.each do |group|
             button = group.name

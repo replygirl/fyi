@@ -145,13 +145,18 @@ $breakpoint: inspect(screen and (min-width: $breakpoint-width));
   }
   main,
   &.io-main {
-      margin: 0 auto;
-      width: $breakpoint-width - $base-unit*6;
-      max-width: 100%;
-      padding: $base-unit * 2;
-      @media #{$breakpoint} {
-        padding: $base-unit*2 + $opt-unit
-      }
+    margin: 0 auto;
+    width: $breakpoint-width - $base-unit*6;
+    max-width: 100%;
+    padding: $base-unit * 2;
+    opacity: 1;
+    transition: opacity 225ms;
+    @media #{$breakpoint} {
+      padding: $base-unit*2 + $opt-unit
+    }
+    &.hidden {
+      opacity: 0;
+    }
     > *:first-child {
       margin-top: -$base-unit;
       @media #{$breakpoint} {

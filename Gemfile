@@ -12,6 +12,3 @@ gem 'coffee-script', '~> 2.4', '>= 2.4.1'
 # windows
 gem 'tzinfo-data', platforms: [:mswin, :mingw, :jruby]
 gem 'wdm', '~> 0.1', platforms: [:mswin, :mingw]
-
-# polymer won't work without this
-gem 'typescript-node', '~> 1.6', '>= 1.6.2'

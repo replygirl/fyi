@@ -36,7 +36,8 @@ renderState = (root, target, apply_state = false) ->
   container.addClass "loading"
   $.get generatePath(root, target), (content) ->
     $("[data-link-root]:not([data-link-target])")
-      .each -> $(this).addClass "hidden"
+      .each ->
+        $(this).addClass "hidden"
       .filter "[data-link-root='" + root + "']"
       .on "transitionend", ->
         container.removeClass "loading"
@@ -52,14 +53,10 @@ renderStateFromURL = ->
     return true unless root
     target = qs[root]
     return false if target
-  renderState(root, target) if target
-initializeStateFromURL = ->
-  renderStateFromURL()
-  home = config.home
-  target = qs[home.root]
-  unless target and target != home.target
-    base = $("[data-link-root='" + home.root + "']:not([data-link-target]):empty")
-    base.load generatePath home.root, home.target
+  if target
+    renderState(root, target)
+  else
+    renderState(config.home.root, config.home.target)
 applyState = (root, target) ->
   renderState(root, target)
   home = config.home
@@ -71,8 +68,9 @@ applyState = (root, target) ->
 clearState = ->
   $("[data-link-root]:not([data-link-target])").addClass "hidden"
   history.pushState null, null, "/"
+
 $(document).ready ->
-  initializeStateFromURL()
+  renderStateFromURL()
   $(window).on "popstate", ->
     renderStateFromURL()
   $("[data-link-root][data-link-target]").on "click", ->
