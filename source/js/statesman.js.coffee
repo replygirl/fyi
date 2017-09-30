@@ -31,7 +31,7 @@ generateSlug = (key, value) ->
   return "?" + key + "=" + value
 generatePath = (root, target) ->
   return [config.html_dir, root, target].join("/") + ".html"
-renderState = (root, target, apply_state = false) ->
+renderState = (root, target) ->
   container = config.container
   container.addClass "loading"
   $.get generatePath(root, target), (content) ->
@@ -68,7 +68,6 @@ applyState = (root, target) ->
 clearState = ->
   $("[data-link-root]:not([data-link-target])").addClass "hidden"
   history.pushState null, null, "/"
-
 $(document).ready ->
   renderStateFromURL()
   $(window).on "popstate", ->
