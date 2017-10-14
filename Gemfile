@@ -6,8 +6,11 @@ gem 'middleman-livereload', '~> 3.4', '>= 3.4.6'
 gem 'middleman-autoprefixer', '~> 2.8'
 
 # languages
-gem 'slim', '~> 3.0', '>= 3.0.8'
-gem 'coffee-script', '~> 2.4', '>= 2.4.1'
+gem 'slim', '~> 3.0', '>= 3.0.8'          # html
+gem 'coffee-script', '~> 2.4', '>= 2.4.1' # javascript
+
+# engines
+gem 'redcarpet', '~> 3.4' # markdown
 
 # windows
 gem 'tzinfo-data', platforms: [:mswin, :mingw, :jruby]

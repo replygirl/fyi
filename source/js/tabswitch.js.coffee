@@ -20,7 +20,9 @@ requires jquery
 
 $(document).ready ->
   $(".io-tab-switcher > header > button").on "click", ->
-    current_tab = $(this).siblings().andSelf().eq(".active")
+    tabs = $(this).siblings.andSelf()
+    tabs.addClass "disabled"
+    current_tab = tabs.filter ".active"
     current_index = current_tab.index()
     target_index = $(this).index()
     unless target_index == current_index
@@ -31,11 +33,13 @@ $(document).ready ->
         target_hide_class = "hidden-left"
         current_hide_class = "hidden-right"
       $(this).add(current_tab).toggleClass "active"
-      {...target...}
+      frames = $(this).closest(".io-tab-switcher").children "ul"
+      frames.eq target_index
         .addClass target_hide_class
         .removeClass current_hide_class
-      {...current...}
+      frames.eq current_index
         .addClass current_hide_class
         .on "transitionend", ->
-          {...target...}.removeClass target_hide_class
-          $(this).off "transitionend", false
+          $(this).off "transitionend"
+          frames.eq(target_index).removeClass target_hide_class
+          tabs.removeClass "disabled"

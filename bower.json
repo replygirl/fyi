@@ -4,7 +4,7 @@
     "imogen <im@imogen.fyi>"
   ],
   "description": "my website",
-  "main": "",
+  "main": "README.md",
   "license": "MIT",
   "homepage": "http://imogen.fyi",
   "private": true,

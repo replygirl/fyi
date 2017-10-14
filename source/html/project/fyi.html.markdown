@@ -3,7 +3,7 @@ title: "fyi"
 colors:
   bg: "#fafafa"
   text: "#202020"
-  brand: "#fcb414"
+  brand: "#fe2851"
 portfolio:
 - name: "web"
   images:
@@ -16,14 +16,25 @@ portfolio:
     - "/img/projects/fyi/music/bloom.png"
 ---
 
-***FYI*** is my personal branding project, for which I have the narrow goal of keeping my visual presentation consistent across all contexts and media. It's not that serious, but it's nice to have.
+***FYI*** is an effort to present myself to the world with some level of visual consistency. In other words, it's a *"personal brand" (🤢).*
 
-Design and music each have their own rules and elements to serve different audiences, but both pull from a shared set of guidelines for typography and layout. 
+FYI is also this website, which I use as an educational tool for myself. Building and rebuilding it lets me validate new ideas and improve as a front-end developer without the strategic concerns that typically come with putting things out into the world. The source is on [GitHub](https://github.com/imogennnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn/fyi).
 
-This is **version 3**. Here's what's new:
-- The main color palette has been condensed from red, orange, yellow, & blue to a bright RGB set.
-- A second font, [Karla](https://fonts.google.com/specimen/Karla), has been added. [Space Mono](https://fonts.google.com/specimen/Space+Mono) is cool, but it got pretty hard to read in paragraphs.
-- This whole website was rewritten from scratch! My old build tool broke in an update, so rather than revert I started fresh with [middleman](https://middlemanapp.com) and made some improvements, like:
-  - I can write projects up in Markdown, with all of the HTML for the pages in one layout file
-  - On phones, you can smoothly drag cards left and right.
-  - We're hosted on [Surge Plus](https://surge.sh) now, with forced HTTPS
+Changes as of October 2017:
+
+### New brand elements
+- A bright RGB color palette replaces blue + warm tones.
+- [Karla](https://fonts.google.com/specimen/Karla), a new body font to complement [Space Mono](https://fonts.google.com/specimen/Space+Mono).
+- Italicized page headers and hero text.
+
+### Website version 3
+- [Middleman](https://middlemanapp.com) for generation.
+- [Surge](https://surge.sh) for hosting.
+- **Statesman**, a thing I wrote, for navigation.
+  - It's a state controller that doesn't keep track of state.
+  - Configuration uses four optional variables, and the rest is HTML attributes. No scripting experience required.
+  - Designed for use in future projects.
+- Markdown as the markup language for project pages.
+  - HTML is hidden away in a separate layout file.
+  - **StatesmanMarkdown**, a [Redcarpet](https://github.com/vmg/redcarpet) extension I wrote, parses local links like {this}(page,music).
+- Grids! After a few experiments with 2D scrolling, I've calmed down and made things move the direction you expect them to.

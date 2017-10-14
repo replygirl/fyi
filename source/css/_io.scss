@@ -197,7 +197,7 @@ $breakpoint: inspect(screen and (min-width: $breakpoint-width));
         transform: translateY($base-unit*8) scale(0.95);
         transition: transform $base-time*2, border-radius $base-time*2.5, opacity $base-time*2;
         transition-timing-function: ease-in;
-        border-radius: $base-unit*6;
+        border-radius: $base-unit * 4;
         opacity: 0;
       }
       ~ * {
@@ -208,6 +208,60 @@ $breakpoint: inspect(screen and (min-width: $breakpoint-width));
     &:not(.hidden) ~ * {
       filter: blur(6px);
       transition: filter $base-time*2 ease-out, opacity $base-time*2;
+    }
+  }
+  .io-modal,
+  &.io-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba($color-white, $alpha-background);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: background-color $base-time*2;
+    z-index: 1;
+    > *:first-child {
+      overflow-x: hidden;
+      transform: translateY(0) scale(1);
+      width: 100%;
+      height: 100%;
+      border-radius: 0;
+      opacity: 1;
+      @include shadow-high;
+      transition: transform $base-time*3, border-radius $base-time*2, opacity $base-time*2.5;
+      transition-timing-function: ease-out;
+    }
+    &.hidden {
+      pointer-events: none;
+      > * {
+        transform: translateY($base-unit*8) scale(0.95);
+        transition: transform $base-time*2, border-radius $base-time*2.5, opacity $base-time*2;
+        transition-timing-function: ease-in;
+        border-radius: $base-unit * 4;
+        opacity: 0;
+      }
+    }
+  }
+  a {
+    background-color: $color-blue;
+    color: $color-white;
+    font-weight: bold;
+    text-decoration: none;
+    &:not([data-link-root])::after { content: " 🔗"; }
+    // how can i abstract this out
+    &[data-link-root="page"][data-link-target="design"],
+    &[data-link-root="design"] {
+      background-color: $color-red;
+      &::after { content: " 💡"; }
+    }
+    &[data-link-root="page"][data-link-target="music"],
+    &[data-link-root="music"] {
+      background-color: $color-green;
+      &::after { content: " 🎶"; }
     }
   }
   h1, h2, h3, h4, h5, h6 {

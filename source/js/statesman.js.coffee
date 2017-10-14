@@ -55,7 +55,10 @@ renderState = (root, target, apply_state = false) ->
             container.off "transitionend", roots
             base = $("[data-link-root='" + root + "']:not([data-link-target])")
             base.html content
-            show = -> base.removeClass "hidden obscured"
+            attachHandlers base
+            show = ->
+              # move attachHandlers to here if u have issues
+              base.removeClass "hidden obscured"
             setTimeout show, 1
             applyState(root, target) if apply_state
 renderStateFromURL = ->
@@ -84,18 +87,20 @@ initializeStateFromURL = ->
           setTimeout show, 1
         setTimeout populate, 500
       setTimeout initialize, 500
-$(document).ready ->
-  initializeStateFromURL()
-  $(window).on "popstate", ->
-    renderStateFromURL()
-  $("[data-link-root][data-link-target]").on "click", ->
+attachHandlers = (base = config.container) ->
+  base.on "click", "[data-link-root][data-link-target]", ->
     root = $(this).attr "data-link-root"
     target = $(this).attr "data-link-target"
     renderState root, target, true
-  config.container.on "click", "[data-io-role='close']", ->
+  base.on "click", "[data-io-role='close']", ->
     $(this).closest("[data-link-root]").addClass "hidden"
     root = config.home.root
     $("[data-link-root='" + root + "']:not([data-link-target])").removeClass "obscured"
     $("[data-link-root!='" + root + "'][data-link-target]").removeClass "disabled"
     target = $("[data-link-root='" + root + "'][data-link-target].disabled").attr "data-link-target"
     history.pushState null, null, generateSlug root, target
+$(document).ready ->
+  initializeStateFromURL()
+  $(window).on "popstate", ->
+    renderStateFromURL()
+  attachHandlers()
