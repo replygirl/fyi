@@ -1,0 +1,83 @@
+/ruby:
+  data = {
+    projects: [
+      { name: "fyi",
+        abstract: "it's a thing",
+        thumbs: [ "img/path.png",
+                  "img/path.png" ]},
+      { name: "fresco",
+        abstract: "oh my god",
+        thumbs: [ "img/path.png",
+                  "img/path.png" ]}
+    ]
+  }
+
+/ul
+  - data[:projects].each do |project|
+    li
+      div
+        - dir = "/img/project/#{project[:name]}/thumbs/"
+        - project[:thumbs].each do |path|
+          img src="#{dir + path}"
+      div
+        a data-ref="project/#{project[:name]}" = project[:name]
+        span = project[:abstract]
+
+h3 i've been around
+table
+  tr
+    td now
+    td: a href="//lighthouse.lgbt" lighthouse
+    td product lead
+  tr
+    td 2017
+    td corporate chat client <i>(nda)</i>
+    td product designer
+  tr
+    td 2017
+    td hivemvp
+    td presentation & identity designer
+  tr
+    td 2017
+    td: a href="//degreecast.com" degreecast
+    td product designer
+  tr
+    td 2017
+    td: a href="//superpowered.com" superpowered
+    td presentation designer
+  tr
+    td 2017
+    td: a href="//winworks.ai2roi.com" winworks
+    td product designer
+  tr
+    td 2017
+    td: a href="//syncspot.net" syncspot
+    td presentation designer
+  tr
+    td 2017
+    td: a href="//axios.com" axios
+    td product designer
+  tr
+    td 2017
+    td: a href="//docksocial.com" docksocial
+    td product designer
+  tr
+    td 2016
+    td art cataloging system <i>(nda)</i>
+    td product designer
+  tr
+    td 2015
+    td: a href="//itunes.apple.com/us/app/real-meet-new-friends/id1088623406" real
+    td product designer
+  tr
+    td 2015
+    td straightkey
+    td product designer
+  tr
+    td 2015–17
+    td: a href="//beanthere.io" beanthere
+    td product designer
+  tr
+    td 2014–17
+    td: a href="//fresconews.com" fresco
+    td chief design officer

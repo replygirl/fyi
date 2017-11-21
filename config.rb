@@ -1,6 +1,7 @@
 require 'slim'
 require 'coffee-script'
 require 'middleman-core/renderers/redcarpet'
+require 'sprockets/es6'
 
 class StatesmanMarkdown < Middleman::Renderers::MiddlemanRedcarpetHTML
   def preprocess(document)
@@ -20,6 +21,10 @@ activate :autoprefixer do |prefix|
   prefix.browsers = "last 2 versions"
 end
 
+activate :sprockets do |s|
+  s.supported_output_extensions << '.es6'
+end
+
 set :markdown_engine, :redcarpet
 # set :markdown, :highlight => true
 set :markdown,  :no_intra_emphasis  => true,
@@ -31,7 +36,7 @@ set :markdown,  :no_intra_emphasis  => true,
                 :renderer           => StatesmanMarkdown
 
 set :layout, false
-page "/html/project/*", :layout => "project"
+page "html/project/*", :layout => "project"
 #page "/html/page/design", :layout => "design"
 
 set :js_dir, 'js'

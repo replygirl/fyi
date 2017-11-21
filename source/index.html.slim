@@ -2,8 +2,21 @@ doctype html
 html
   == partial "html/head"
   body.io
-    aside.io-dialog.hidden data-link-root="action"
-    article.io-modal data-link-root="project"
-    == partial "html/nav"
-    main data-link-root="page"
+    nav
+      a data-ref="page/design" design
+      a data-ref="page/music" music
+    header
+    main
+    aside
+      header data-ref="contact" contact
+      form
+        h2 say hi
+        input[type="text" name="name" placeholder="who are u"
+              required]
+        input[type="text" name="email" placeholder="whats yr email"
+              required]
+        textarea[name="body" placeholder="whats yr problem"
+                 required]
+        input[type="submit" value="send" data-ref="contact/close"
+              required]
     == partial "html/scripts"

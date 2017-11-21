@@ -20,11 +20,14 @@ $alpha-shadow: 0.1;
 $alpha-background: 0.05;
 $alpha-line: $alpha-background;
 //layout
-$base-unit: 8px; //v-margin and 50% of h-margin
+$base-unit: 10px; //v-margin and 50% of h-margin
 $opt-unit: 8px; //extra h-margin for tablets & up
 $breakpoint-width: 688px; //what makes a tablet?
 //animation
 $base-time: 150ms;
+
+//PLACEHOLDERS
+//link styles
 
 //FRAGMENTS
 //use these bits to quickly apply io to existing elements
@@ -41,6 +44,31 @@ $base-time: 150ms;
 .io-background-color-blue { background-color: $color-blue; }
 .io-background-color-white { background-color: $color-white; }
 .io-background-color-black { background-color: $color-black; }
+.io-theme-red {
+  background-color: $color-red;
+  color: $color-white;
+  a { background-color: transparent; }
+}
+.io-theme-green {
+  background-color: $color-green;
+  color: $color-white;
+  a { background-color: transparent; }
+}
+.io-theme-blue {
+  background-color: $color-blue;
+  color: $color-white;
+  a { background-color: transparent; }
+}
+.io-theme-white {
+  background-color: $color-white;
+  color: $color-black;
+  a { background-color: transparent; }
+}
+.io-theme-black {
+  background-color: $color-black;
+  color: $color-white;
+  a { background-color: transparent; }
+}
 //sass mixins
 @mixin outline {
   outline: 1px solid rgba($color-black, $alpha-line);
@@ -64,6 +92,9 @@ $breakpoint: inspect(screen and (min-width: $breakpoint-width));
   *::after,
   *::before {
     box-sizing: inherit;
+  }
+  p {
+    margin: $base-unit 0;
   }
   //global styles
   background-color: $color-white;
@@ -142,138 +173,13 @@ $breakpoint: inspect(screen and (min-width: $breakpoint-width));
       left: $base-unit + $opt-unit;
     }
   }
-  main,
-  &.io-main {
-    margin: 0 auto;
-    width: $breakpoint-width - $base-unit*6;
-    max-width: 100%;
-    padding: $base-unit * 2;
-    opacity: 1;
-    transition: opacity $base-time*2;
-    @media #{$breakpoint} {
-      padding: $base-unit*2 + $opt-unit
-    }
-    &.obscured { opacity: 0.99; }
-    &.hidden { opacity: 0; }
-    > *:first-child {
-      margin-top: -$base-unit;
-      @media #{$breakpoint} {
-        margin-top: -($base-unit + $opt-unit);
-      }
-    }
-  }
-  .io-dialog,
-  &.io-dialog {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba($color-white, $alpha-background);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    transition: background-color $base-time*2;
-    z-index: 1;
-    > * {
-      overflow-x: hidden;
-      transform: translateY(0) scale(1);
-      width: 384px;
-      max-width: calc(100% - #{$base-unit*6});
-      max-height: calc(100% - #{$base-unit*6});
-      border-radius: $base-unit / 2;
-      opacity: 1;
-      @include shadow-high;
-      transition: transform $base-time*3, border-radius $base-time*2, opacity $base-time*2.5;
-      transition-timing-function: ease-out;
-      @media (min-height: 512px + $base-unit*6) {
-        max-height: 512px;
-      }
-    }
-    &.hidden {
-      pointer-events: none;
-      > * {
-        transform: translateY($base-unit*8) scale(0.95);
-        transition: transform $base-time*2, border-radius $base-time*2.5, opacity $base-time*2;
-        transition-timing-function: ease-in;
-        border-radius: $base-unit * 4;
-        opacity: 0;
-      }
-      ~ * {
-        filter: blur(0);
-        transition: filter $base-time*2 ease-in, opacity $base-time*2;
-      }
-    }
-    &:not(.hidden) ~ * {
-      filter: blur(6px);
-      transition: filter $base-time*2 ease-out, opacity $base-time*2;
-    }
-  }
-  .io-modal,
-  &.io-modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba($color-white, $alpha-background);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    transition: background-color $base-time*2;
-    z-index: 1;
-    > *:first-child {
-      overflow-x: hidden;
-      transform: translateY(0) scale(1);
-      width: 100%;
-      height: 100%;
-      border-radius: 0;
-      opacity: 1;
-      @include shadow-high;
-      transition: transform $base-time*3, border-radius $base-time*2, opacity $base-time*2.5;
-      transition-timing-function: ease-out;
-    }
-    &.hidden {
-      pointer-events: none;
-      > * {
-        transform: translateY($base-unit*8) scale(0.95);
-        transition: transform $base-time*2, border-radius $base-time*2.5, opacity $base-time*2;
-        transition-timing-function: ease-in;
-        border-radius: $base-unit * 4;
-        opacity: 0;
-      }
-    }
-  }
-  a {
-    background-color: $color-blue;
-    color: $color-white;
-    font-weight: bold;
-    text-decoration: none;
-    &:not([data-link-root])::after { content: " 🔗"; }
-    // how can i abstract this out
-    &[data-link-root="page"][data-link-target="design"],
-    &[data-link-root="design"] {
-      background-color: $color-red;
-      &::after { content: " 💡"; }
-    }
-    &[data-link-root="page"][data-link-target="music"],
-    &[data-link-root="music"] {
-      background-color: $color-green;
-      &::after { content: " 🎶"; }
-    }
-  }
-  h1, h2, h3, h4, h5, h6 {
-    margin: 8px 0;
-    font: bold 20px/24px $brand-font;
-  }
-  h1, h2 { font-style: italic; }
+  /*
   header:not(.io-navbar),
   &.io-header {
     padding: $base-unit+$opt-unit/2 0;
     font: 14px/24px $brand-font;
   }
+  */
   button,
   input[type="submit"],
   &.io-button {
@@ -328,4 +234,39 @@ $breakpoint: inspect(screen and (min-width: $breakpoint-width));
     }
     textarea { resize: none; }
   }
+}
+
+//LOW PRIORITY
+//generic stuff that shouldn't override anything
+a {
+  background-color: $color-blue;
+  color: $color-white;
+  font-weight: bold;
+  text-decoration: none;
+  /* cool but like
+  &:not([data-ref])::after { content: " 🔗"; }
+  // how can i abstract this out
+  &[data-ref*="design"],
+  &[data-ref*="project"] {
+    background-color: $color-red;
+    &::after { content: " 💡"; }
+  }
+  &[data-ref*="music"] {
+    background-color: $color-green;
+    &::after { content: " 🎶"; }
+  }
+  */
+}
+h1, h2, h3, h4, h5, h6 {
+  margin: $base-unit 0;
+  font: bold 20px/24px $brand-font;
+}
+h1, h2 { font-style: italic; }
+.display2 {
+  margin: $base-unit*2+$opt-unit*1.5 0 $base-unit;
+  font: bold italic 45px/48px $brand-font;
+}
+.display1 {
+  margin: $base-unit*2 0 $base-unit;
+  font: bold 34px/40px $brand-font;
 }

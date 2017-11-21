@@ -2,10 +2,131 @@
 @import "../bower/normalize-scss/_normalize";
 @import "_io";
 
+%padding {
+  padding: $base-unit*2;
+  @media #{$breakpoint} {
+    padding: $base-unit*2 $base-unit*2+$opt-unit/2;
+  }
+}
+%nav-button {
+  @extend .io.io-button;
+  @extend %padding;
+  text-align: left;
+}
+
 html, body {
   height: 100%;
+  width: 100%;
   overflow-x: hidden;
 }
+[data-ref] {
+  cursor: pointer;
+  &:hover {
+    @extend .io-hoverable;
+  }
+}
+
 body {
-  font-family: "Karla";
+  display: grid;
+  grid-template:
+    "nav"
+    "head"
+    "main" 1fr
+    "contact";
+  overflow-y: hidden;
+  @media #{$breakpoint} {
+    grid-template:
+      "nav     main"
+      "head    main" 1fr
+      "contact main"
+      / 384px  1fr;
+  }
+  > main { overflow-y: auto; }
+  > nav {
+    grid-area: nav;
+    display: flex;
+    a {
+      @extend %nav-button;
+      flex-grow: 1;
+      flex-basis: 50%;
+      &[data-ref="page/design"] {
+        background-color: $color-red;
+      }
+      &[data-ref="page/music"] {
+        background-color: $color-green;
+      }
+    }
+  }
+  > header {
+    background-color: $color-red;
+    grid-area: head;
+    @media (max-height: 600px) {
+      display: none;
+    }
+    .display1, .display2 {
+      display: none;
+      @media #{$breakpoint} {
+        display: initial;
+      }
+    }
+    > div {
+      @extend %padding;
+      width: 100%;
+      height: 100%;
+    }
+  }
+  > main {
+    padding: $base-unit*2+$opt-unit*1.5 $base-unit*2;
+    grid-area: main;
+    @media #{$breakpoint} {
+      padding: $base-unit*4+24px calc(50% - 320px);
+    };
+  }
+  > aside {
+    grid-area: contact;
+    color: $color-white;
+    &:not(.active) {
+      height: 64px;
+    }
+    > * { background-color: $color-blue; }
+    > header {
+      @extend %nav-button;
+      background-color: $color-blue;
+    }
+  }
+}
+
+form {
+  @extend %padding;
+  &:invalid input[type='submit'] {
+    pointer-events: none;
+    opacity: $alpha-disabled;
+  }
+}
+table {
+  vertical-align: top;
+  td {
+    &:first-child { font-style: italic; }
+    &:not(:last-child) { padding-right: $base-unit*2; }
+  }
+}
+ul.soundcloud {
+  margin: 0;
+  width: 100%;
+  padding: 0;
+  list-style-type: none;
+  line-height: 0px;
+  &[data-columns]::before {
+    content: '1 .column';
+    @media #{$breakpoint} {
+      content: '3 .column';
+    }
+  }
+  > li {
+    width: 100%;
+    @media #{$breakpoint} {
+      width: calc(50% - #{$base-unit});
+    }
+    &:not(:last-child) { margin-bottom: $base-unit*2; }
+  }
 }
