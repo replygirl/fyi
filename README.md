@@ -8,7 +8,7 @@ this is my v3 website. u can fork it, swap out the content & emailjs keys, and u
 #### stack
 - [middleman](https://middlemanapp.com) as our generator
 - [slim](http://slim-lang.com) as our templating language
-- [coffeescript](http://coffeescript.org) to make javascript less annoying
+- [es6](https://github.com/tc39/ecma262) to pretend javascript isn't bad
 #### preview
 1. `cd` to project
 2. `bundle exec middleman`
