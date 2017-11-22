@@ -103,6 +103,10 @@ body {
 
 form {
   @extend %padding;
+  h2 {
+    display: none;
+    @media (min-height: 600px) { display: initial; }
+  }
   &:invalid input[type='submit'] {
     pointer-events: none;
     opacity: $alpha-disabled;
