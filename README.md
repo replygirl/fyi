@@ -1,5 +1,5 @@
 # fyi
-this is my v3 website. u can fork it, swap out the content & emailjs keys, and use it as yours. too bad nothing works yet
+this is my v3 website. it works. i intend to make a few improvements that make the code more generative so it's easier for u to use your own directory structure
 #### overview
 - static, single-page [app shell](https://developers.google.com/web/fundamentals/architecture/app-shell)
 - built with [middleman](https://middlemanapp.com)
