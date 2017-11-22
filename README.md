@@ -8,7 +8,8 @@ this is my v3 website. it works. i intend to make a few improvements that make t
 #### stack
 - [middleman](https://middlemanapp.com) as our generator
 - [slim](http://slim-lang.com) as our templating language
-- [es6](https://github.com/tc39/ecma262) to pretend javascript isn't bad
+- [sass](http://sass-lang.com) for styling 
+- [sprockets es6](https://github.com/TannerRogalsky/sprockets-es6) to convert ecmascript with a `.js.es6` extension to vanilla javascript with [babel](https://babeljs.io)
 #### preview
 1. `cd` to project
 2. `bundle exec middleman`
