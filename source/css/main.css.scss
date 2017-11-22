@@ -17,7 +17,8 @@
 html, body {
   height: 100%;
   width: 100%;
-  overflow-x: hidden;
+  overflow-y: hidden;
+
 }
 [data-ref] {
   cursor: pointer;
@@ -34,14 +35,17 @@ body {
     "main" 1fr
     "contact";
   overflow-y: hidden;
-  @media #{$breakpoint} {
+  @media (min-width: $breakpoint-width + 384px) {
     grid-template:
       "nav     main"
       "head    main" 1fr
       "contact main"
       / 384px  1fr;
   }
-  > main { overflow-y: auto; }
+  > main {
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+  }
   > nav {
     grid-area: nav;
     display: flex;
@@ -60,12 +64,13 @@ body {
   > header {
     background-color: $color-red;
     grid-area: head;
-    @media (max-height: 600px) {
-      display: none;
+    display: none;
+    @media (min-height: 600px), (min-width: $breakpoint-width + 384px) {
+      display: initial;
     }
     .display1, .display2 {
       display: none;
-      @media #{$breakpoint} {
+      @media (min-height: 688px) {
         display: initial;
       }
     }
@@ -76,9 +81,9 @@ body {
     }
   }
   > main {
-    padding: $base-unit*2+$opt-unit*1.5 $base-unit*2;
+    @extend %padding;
     grid-area: main;
-    @media #{$breakpoint} {
+    @media (min-width: $breakpoint-width + 384px + $base-unit*2+$opt-unit/2) {
       padding: $base-unit*4+24px calc(50% - 320px);
     };
   }
@@ -116,15 +121,9 @@ ul.soundcloud {
   padding: 0;
   list-style-type: none;
   line-height: 0px;
-  &[data-columns]::before {
-    content: '1 .column';
-    @media #{$breakpoint} {
-      content: '3 .column';
-    }
-  }
   > li {
     width: 100%;
-    @media #{$breakpoint} {
+    @media (min-width: $breakpoint-width + 384px) {
       width: calc(50% - #{$base-unit});
     }
     &:not(:last-child) { margin-bottom: $base-unit*2; }

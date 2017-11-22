@@ -22,7 +22,7 @@ $alpha-line: $alpha-background;
 //layout
 $base-unit: 10px; //v-margin and 50% of h-margin
 $opt-unit: 8px; //extra h-margin for tablets & up
-$breakpoint-width: 688px; //what makes a tablet?
+$breakpoint-width: 640px; //what makes a tablet?
 //animation
 $base-time: 150ms;
 
@@ -84,7 +84,7 @@ $base-time: 150ms;
 }
 
 //MAIN LIBRARY
-$breakpoint: inspect(screen and (min-width: $breakpoint-width));
+$breakpoint: inspect((min-width: $breakpoint-width));
 .io {
   //resets
   box-sizing: border-box;
