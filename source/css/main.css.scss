@@ -109,7 +109,7 @@ form {
   }
 }
 table {
-  vertical-align: top;
+  tr { vertical-align: top; }
   td {
     &:first-child { font-style: italic; }
     &:not(:last-child) { padding-right: $base-unit*2; }
