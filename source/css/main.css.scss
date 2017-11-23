@@ -127,7 +127,7 @@ ul.soundcloud {
   line-height: 0px;
   > li {
     width: 100%;
-    @media (min-width: $breakpoint-width + 384px) {
+    @media #{$breakpoint} {
       width: calc(50% - #{$base-unit});
     }
     &:not(:last-child) { margin-bottom: $base-unit*2; }
