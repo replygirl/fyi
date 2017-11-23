@@ -61,12 +61,19 @@ class StateControl {
         }
       }
     });
-    // history pops
-    document.body.addEventListener('popstate', event => {
+    window.addEventListener('popstate', event => {
       const params = this.constructor.getParams();
-      const base_state = this.states[0];
-      this.states.shift();
-      this.render(this.states[0], base_state);
+      const target_state = new State({
+        page:    params.page,
+        project: params.project,
+        contact: params.contact
+      });
+      if (target_state == this.states[1]) {
+        this.states.shift();
+      } else {
+        this.states.unshift(target_state);
+      }
+      this.render(this.states[0]);
     });
   }
   // gets
