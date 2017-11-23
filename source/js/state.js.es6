@@ -25,6 +25,9 @@ class State {
     }
     return params;
   }
+  //static applyIfExists(new_thing, old_thing) {
+  //  return (new_thing != null) ? new_thing : old_thing
+  //}
 }
 class StateControl {
   constructor(elements) {
