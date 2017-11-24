@@ -88,30 +88,14 @@ body {
     };
   }
   > aside {
+    @extend %nav-button;
     grid-area: contact;
+    background-color: $color-blue;
     color: $color-white;
-    &:not(.active) {
-      height: 64px;
-    }
-    > * { background-color: $color-blue; }
-    > header {
-      @extend %nav-button;
-      background-color: $color-blue;
-    }
+    cursor: pointer;
   }
 }
 
-form {
-  @extend %padding;
-  h2 {
-    display: none;
-    @media (min-height: 600px) { display: initial; }
-  }
-  &:invalid input[type='submit'] {
-    pointer-events: none;
-    opacity: $alpha-disabled;
-  }
-}
 table {
   tr { vertical-align: top; }
   td {

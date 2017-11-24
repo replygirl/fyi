@@ -1,6 +1,11 @@
-script src="//cdn.jsdelivr.net/npm/autosize@4.0.0/dist/autosize.min.js"
-script src="//smtpjs.com/v2/smtp.js"
+script src="//cdn.jsdelivr.net/npm/clipboard@1/dist/clipboard.min.js"
 script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js"
 == javascript_include_tag "state"
-//== javascript_include_tag "listfilter"
-== javascript_include_tag "email"
+javascript:
+  window.onload = function() {
+    var copy = document.querySelector('.copy');
+    var clippy = new Clipboard('.copy');
+    clippy.on('success', function(event) {
+      copy.innerHTML = "email copied!";
+    });
+  }

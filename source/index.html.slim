@@ -7,12 +7,5 @@ html
       a data-ref="page/music" music
     header
     main
-    aside
-      header data-ref="contact" contact
-      form
-        h2 say hi
-        input[type="text" name="name" placeholder="who are u" required]
-        input[type="text" name="email" placeholder="whats yr email" required]
-        textarea[name="body" placeholder="whats yr problem" required]
-        input[type="submit" value="send" data-ref="contact/close" required]
+    aside.copy data-clipboard-text="im@imogen.fyi" say hi
     == partial "html/scripts"
