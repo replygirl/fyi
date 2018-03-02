@@ -5,6 +5,12 @@ $color-music: #b88e8d;
 $font-family-header: 'Ministry';
 $font-family-body: 'Matrix II OT Book';
 $font-family-body-script: 'Matrix II Script OT Book';
+
+$breakpoint-phone: inspect((min-width: 356px));
+$breakpoint-phablet: inspect((min-width: 414px));
+$breakpoint-tablet: inspect((min-width: 768px));
+$breakpoint-desktop: inspect((min-width: 1024px));
+
 $unit-stroke: 2px;
 
 * {box-sizing: border-box}
@@ -21,9 +27,10 @@ html, body, main {
     position: absolute;
     left: 0;
     right: 0;
-    bottom: -8px;
+    bottom: -4px;
     height: 2px;
     background-color: black;
+    @media #{$breakpoint-phablet} {bottom: -8px}
   }
 }
 
@@ -55,14 +62,18 @@ body {
 
 header {
   @extend %title;
-  width: 60px;
-  padding: 20px;
+  width: 44px;
+  padding: 20px 12px;
   background-color: black;
   color: white;
   display: flex;
   flex-direction: column-reverse;
   align-items: flex-start;
   justify-content: space-between;
+  @media #{$breakpoint-phablet} {
+    width: 60px;
+    padding: 20px;
+  }
   > * {
     position: relative;
     &:first-child {
@@ -83,11 +94,13 @@ nav > a {
   &.active {pointer-events: none}
   &.active, &:hover {
     @extend %underline;
-    &[ng-click*='design']::after {
-      background-color: $color-design
+    &[ng-click*='design'] {
+      color: $color-design;
+      &::after {background-color: $color-design}
     }
-    &[ng-click*='music']::after {
-      background-color: $color-music
+    &[ng-click*='music'] {
+      color: $color-music;
+      &::after {background-color: $color-music}
     }
   }
   &.active, &:hover {
@@ -99,9 +112,10 @@ nav > a {
 
 section {
   height: 100%;
-  padding: 20px 32px;
+  padding: 20px;
   overflow-y: scroll;
   display: none;
+  @media #{$breakpoint-tablet} {padding: 20px 32px}
   &.active {display: flex}
 }
 #design {
@@ -112,11 +126,17 @@ section {
     display: initial;
     + h2 ~ figure {display: none}
   }
-  > .card {margin-right: 32px}
+  > .card {
+    margin-right: 20px;
+    @media #{$breakpoint-tablet} {margin-right: 32px}
+  }
 }
 h2 {
   cursor: pointer;
-  &:not(:last-child) {margin-right: 32px}
+  &:not(:last-child) {
+    margin-right: 20px;
+    @media #{$breakpoint-tablet} {margin-right: 32px}
+  }
   &.active {pointer-events: none}
   &.active, &:hover {@extend %underline;}
   &:hover::after {opacity: .1}
@@ -137,32 +157,44 @@ figcaption {
   }
 }
 .card {
-  width: calc(296px + #{$unit-stroke});
-  max-width: calc(100% - 126px);
+  width: #{224px + $unit-stroke};
+  max-width: calc(100% - 44px);
   border: $unit-stroke solid white;
-  padding: 20px 32px 20px 20px;
+  padding: 12px 20px 12px 12px;
   background-color: black;
   color: white;
+  @media #{$breakpoint-phablet} {
+    width: #{280px + $unit-stroke};
+    max-width: 100%;
+    padding: 20px 32px 20px 20px
+  }
 }
 h4 {margin-bottom: 2px}
 .tags {
   display: inline;
   li {
     display: inline;
-    &:not(:last-child)::after {content: ',\00a0'}
+    &:not(:last-child)::after {content: ', '}
   }
 }
+time {white-space: nowrap}
 dt {
   margin-top: 10px;
   @extend %caption;
 }
 .figimages {
-  margin: 0 -32px;
+  margin: 0 -20px;
   height: 416px;
-  padding: 0 20px 0 #{296px - $unit-stroke};
+  padding: 0 20px 0 calc(100% - #{44px + $unit-stroke});
   display: flex;
   overflow-x: scroll;
   overflow-y: hidden;
+  @media #{$breakpoint-phone} {padding-left: #{224px - $unit-stroke}}
+  @media #{$breakpoint-phablet} {
+    margin: 0 -32px;
+    padding: 0 32px 0 #{280px - $unit-stroke}
+  }
+  @media #{$breakpoint-tablet} {margin: 0 32px}
   &::-webkit-scrollbar {display: none}
   > img {
     height: 416px;
@@ -199,7 +231,7 @@ dt {
     display: inline-block;
     margin: 0 32px 32px 0;
     max-width: 100%;
-    @media (min-width: 768px) {max-width: 400px}
+    @media #{$breakpoint-tablet} {max-width: 400px}
   }
 }
 iframe .soundHeader__logo {display: none}
