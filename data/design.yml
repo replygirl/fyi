@@ -1,0 +1,160 @@
+- title: Product
+  projects:
+  - title: Fresco
+    tags:
+    - photojournalism
+    - ecommerce
+    time: 2014-2017
+    details:
+      summary: news outlets post assignments and license content posted by users. users can follow each other’s reporting
+      role: cdo, sole product designer
+      media: web, phone, watch, tv
+    images:
+    - fresco/ios/assignments.jpg
+    - fresco/ios/camera.jpg
+    - fresco/ios/status.jpg
+    - fresco/ios/following.jpg
+    - fresco/watchos/assignment.jpg
+    - os: watchos
+      images:
+      - fresco/watchos/home.jpg
+      - fresco/watchos/tracking.jpg
+      - fresco/watchos/tracked.jpg
+    - fresco/web/dispatch.jpg
+    - fresco/web/purchases.jpg
+    - fresco/web/moderation.jpg
+    - fresco/web/outlet.jpg
+  - title: Straightkey
+    tags:
+    - communication
+    - accessibility
+    time: 2015
+    details:
+      summary: energy-efficient sms client with morse code input and vibrating morse code output on highlight and receipt
+      role: sole designer
+      media: phone, watch
+    images:
+    - straightkey/android/onboard.png
+    - straightkey/android/home.png
+    - straightkey/android/thread.png
+    - straightkey/android/reply.png
+    -
+      os: wear
+      images:
+      - straightkey/wear/home.png
+      - straightkey/wear/thread.png
+      - straightkey/wear/reply.png
+  - title: '[REDACTED]'
+    tags:
+    - art
+    - cms
+    time: 2016
+    details:
+      summary: personal art collection catalog with bulk photo import, secured sensitive info, and day & night modes
+      role: sole designer
+      media: phone, tablet
+    images:
+    - zilp/ipad/binder.jpg
+    - zilp/ipad/drag.jpg
+    - zilp/ipad/create.jpg
+    - zilp/ipad/slideshows.jpg
+    - zilp/ipad/slideshow.jpg
+    - zilp/iphone/camera.jpg
+    - zilp/iphone/crop.jpg
+    - zilp/iphone/mosaic.jpg
+  - title: Beanthere
+    tags:
+    - culinary
+    time: 2015-2016
+    details:
+      summary: restaurant reviews from your circle
+      role: sole designer
+      media: phone
+    images:
+    - beanthere/home.jpg
+    - beanthere/bean.jpg
+    - beanthere/edit.jpg
+    - beanthere/search.jpg
+    - beanthere/activity.jpg
+  - title: Winworks (née IVOO)
+    tags:
+    - proof of concept
+    - productivity
+    - politics
+    time: 2017
+    details:
+      summary: ai-assisted voter intelligence and canvassing
+      role: sole designer, react native developer
+      media: phone, tablet
+    images:
+    - ok
+  - title: Edith
+    tags:
+    - concept
+    - productivity
+    time: 2016
+    details:
+      summary: markdown text editor with pluggable syntax
+      media: desktop
+    images:
+    - edith/editor.jpg
+    - edith/store.jpg
+  - title: Axios
+    tags:
+    - media, cms
+    time: 2017
+    details:
+      summary: internal tools
+      role: product designer
+      media: web
+  - title: Real
+    tags:
+    - matchmaking
+    time: 2017
+    details:
+      summary: platonic tinder clone
+      role: sole product designer
+      media: phone
+  - title: Degreecast
+    tags:
+    - education
+    time: 2017
+    details:
+      summary: web & identity redesign concept
+      role: sole designer & developer
+      media: web
+  - title: '[REDACTED]'
+    tags:
+    - chat, hr, customer service
+    time: 2017
+    details:
+      summary: corporate sms broadcast & chat service
+      role: sole product designer
+      media: phone
+- title: Presentation
+  projects:
+  - title: HiveMVP
+    tags:
+    - incubator
+    time: 2017
+    details:
+    - summary: launch partner pitch deck
+    images:
+    - ok
+  - title: Superpowered
+    tags:
+    - tech
+    - audio
+    time: 2017
+    details:
+    - summary: sales deck
+    images:
+    - ok
+  - title: Syncspot
+    tags:
+    - advertising
+    time: 2017
+    details:
+    - summary: techstars seed investment pitch deck & identity update
+    images:
+    - ok

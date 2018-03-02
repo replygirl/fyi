@@ -1,0 +1,207 @@
+@import 'reset';
+
+$color-design: #f9fbb2;
+$color-music: #b88e8d;
+$font-family-header: 'Ministry';
+$font-family-body: 'Matrix II OT Book';
+$font-family-body-script: 'Matrix II Script OT Book';
+$unit-stroke: 2px;
+
+* {box-sizing: border-box}
+html, body, main {
+  width: 100%;
+  height: 100%;
+  overflow: hidden
+}
+
+%underline {
+  position: relative;
+  &::after {
+    content: ' ';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -8px;
+    height: 2px;
+    background-color: black;
+  }
+}
+
+//type
+html           {
+  font: 300 14px/20px $font-family-body;
+  letter-spacing: 0.25px;
+}
+h1, h2, h3, h4, %title, %subhead, %caption {
+  letter-spacing: initial
+}
+h1, h2, %title {font: 300 20px/20px $font-family-header}
+h3       {font: 400 20px/20px $font-family-header}
+h4       {font: 200 12px/16px $font-family-body-script}
+%subhead {font: 300 16px/24px $font-family-header}
+%caption {font: 200 12px/14px $font-family-header}
+a {
+  font-family: $font-family-header;
+  font-weight: 400
+}
+
+body {
+  display: flex;
+  > :not(:first-child) {
+    margin-left: 2px;
+    flex: 1
+  }
+}
+
+header {
+  @extend %title;
+  width: 60px;
+  padding: 20px;
+  background-color: black;
+  color: white;
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: flex-start;
+  justify-content: space-between;
+  > * {
+    position: relative;
+    &:first-child {
+      transform-origin: bottom left;
+      transform: rotate(-90deg) translateY(100%)
+    }
+    &:last-child {
+      transform-origin: top left;
+      transform: rotate(-90deg) translateX(-100%)
+    }
+  }
+
+}
+h1 {white-space: nowrap}
+nav > a {
+  margin-left: 20px;
+  cursor: pointer;
+  &.active {pointer-events: none}
+  &.active, &:hover {
+    @extend %underline;
+    &[ng-click*='design']::after {
+      background-color: $color-design
+    }
+    &[ng-click*='music']::after {
+      background-color: $color-music
+    }
+  }
+  &.active, &:hover {
+    &[ng-click*='design'] {color: $color-design;}
+    &[ng-click*='music'] {color: $color-music;}
+  }
+  &:hover::after {opacity: .25}
+}
+
+section {
+  height: 100%;
+  padding: 20px 32px;
+  overflow-y: scroll;
+  display: none;
+  &.active {display: flex}
+}
+#design {
+  flex-wrap: wrap;
+  h2 {order: -1;}
+  figure {display:none}
+  .active ~ figure {
+    display: initial;
+    + h2 ~ figure {display: none}
+  }
+  > .card {margin-right: 32px}
+}
+h2 {
+  cursor: pointer;
+  &:not(:last-child) {margin-right: 32px}
+  &.active {pointer-events: none}
+  &.active, &:hover {@extend %underline;}
+  &:hover::after {opacity: .1}
+}
+figure {
+  margin-top: 32px;
+  padding-top: 32px;
+  position: relative;
+  &:not(.card) {width: 100%}
+}
+figcaption {
+  position: absolute;
+  top: 0;
+  z-index: 1;
+  ~ * {
+    position: relative;
+    z-index: 2
+  }
+}
+.card {
+  width: calc(296px + #{$unit-stroke});
+  max-width: calc(100% - 126px);
+  border: $unit-stroke solid white;
+  padding: 20px 32px 20px 20px;
+  background-color: black;
+  color: white;
+}
+h4 {margin-bottom: 2px}
+.tags {
+  display: inline;
+  li {
+    display: inline;
+    &:not(:last-child)::after {content: ',\00a0'}
+  }
+}
+dt {
+  margin-top: 10px;
+  @extend %caption;
+}
+.figimages {
+  margin: 0 -32px;
+  height: 416px;
+  padding: 0 20px 0 #{296px - $unit-stroke};
+  display: flex;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  &::-webkit-scrollbar {display: none}
+  > img {
+    height: 416px;
+    border: $unit-stroke solid black;
+  }
+  > *:not(:first-child) {margin-left: 20px}
+}
+.stack {
+  max-height: 100%;
+  display: flex;
+  flex-direction: column;
+  &.watchos {width: 100px}
+  &.wear    {width: 132px}
+  img {
+    min-height: 0;
+    border: $unit-stroke solid black;
+    &:not(:first-child) {margin-top: 10px}
+  }
+}
+.spacer {padding-left: 12px}
+#music {
+  flex-direction: column;
+  aside {
+    order: -1;
+    margin-bottom: 32px;
+    span {
+      display: inline-block;
+      margin: 0 32px 10px 0;
+      a {margin-left: 4px}
+    }
+  }
+  ul {margin-right: -32px;}
+  li {
+    display: inline-block;
+    margin: 0 32px 32px 0;
+    max-width: 100%;
+    @media (min-width: 768px) {max-width: 400px}
+  }
+}
+iframe .soundHeader__logo {display: none}
+
+@import 'themes';
