@@ -26,12 +26,15 @@ html ng-app='fyi'
       form name='contactForm' ng-class="activeIfContact('open')"
         input[type='text'
               ng-model='message.name'
+              maxlength='30'
               placeholder='who ru']
         input[type='email'
               ng-model='message.email'
+              maxlength='50'
               placeholder='u@email.site']
         textarea[ng-model='message.body'
                  placeholder='whats up'
+                 maxlength='360'
                  rows='3']
         button[ng-click='sendContact()'
                ng-disabled='contactForm.$invalid'] hey
