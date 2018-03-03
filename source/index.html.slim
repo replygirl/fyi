@@ -20,3 +20,19 @@ html ng-app='fyi'
     main
       section#design ng-class="activeIf('design')" = partial 'design'
       section#music ng-class="activeIf('music')" = partial 'music'
+    aside#hello
+      button[ng-class="activeIfContact(false)"
+             ng-click='openContact()'] hello
+      form name='contactForm' ng-class="activeIfContact('open')"
+        input[type='text'
+              ng-model='message.name'
+              placeholder='who ru']
+        input[type='email'
+              ng-model='message.email'
+              placeholder='u@email.site']
+        textarea[ng-model='message.body'
+                 placeholder='whats up'
+                 rows='3']
+        button[ng-click='sendContact()'
+               ng-disabled='contactForm.$invalid'] hey
+      span ng-class="activeIfContact('success')"
