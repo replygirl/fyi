@@ -249,7 +249,6 @@ dt {
     margin: 0 -32px;
     padding: 0 32px 0 #{280px - $unit-stroke}
   }
-  @media #{$breakpoint-tablet} {margin: 0 32px}
   &::-webkit-scrollbar {display: none}
   > img {
     height: 416px;
