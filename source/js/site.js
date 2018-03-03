@@ -4,26 +4,45 @@ angular.module('fyi', [])
     fyi.state = 'design.product'
     fyi.contact = false
 
-    fyi.to = (s) => fyi.state = s
-    fyi.activeIf = (s) => fyi.state.includes(s) ? 'active':''
-
-    fyi.activeIfContact = (s) => fyi.contact == s ? 'active':''
-    fyi.openContact = () => fyi.contact = 'open'
-    fyi.sendContact = () => {
-      fetch('https://api.clockworksms.com/http/send.aspx', {
-        method: 'POST', // or 'PUT'
-        body: JSON.stringify({
-          'key': '43b5fe9ff7818faadfae43ecaa0cab76be5ac346',
-          'to': 12063989614,
-          'content':
-            `New from ${fyi.message.name} (${fyi.message.email}): ${fyi.message.body}`,
-          'long': 1
-        }),
-        headers: new Headers({
-          'Content-Type': 'application/json'
-        })
-      }).then(res => res.json())
-      .catch(error => console.error('Error:', error))
-      .then(response => console.log('Success:', response));
+    fyi.activeIf = s => fyi.state.includes(s) ? 'active' : ''
+    fyi.to = s => {
+      fyi.state = s
+      ga('send', 'pageview', `/${s.replace('.','/')}`)
     }
-  });
+
+    fyi.activeIfContact = s => fyi.contact == s ? 'active' : ''
+    fyi.openContact = () => {
+      fyi.contact = 'open'
+      ga('send', 'event', 'Contact', 'Open')
+    }
+    fyi.sendContact = () => {
+      let body = new FormData()
+      body.append('key', '43b5fe9ff7818faadfae43ecaa0cab76be5ac346')
+      body.append('to', 12063989614)
+      body.append(
+        'content',
+        `New from ${fyi.message.name} (${fyi.message.email}): ${fyi.message.body}`
+      )
+      body.append('long', 1)
+      fetch('https://api.clockworksms.com/http/send.aspx', {
+        method: 'POST', body: body
+      })
+      .catch(error => {
+        console.error('Error:', error)
+        fyi.contact = 'error'
+        alert('something went wrong :(')
+        ga('send', 'event', 'Contact', 'Send', 'Error')
+      })
+      .then(res => {
+        console.log('Success:', res.json)
+        fyi.contact = 'success'
+        ga('send', 'event', 'Contact', 'Send', 'Success')
+      })
+    }
+
+    (((i, s, o, g, r, a, m) => {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)}))(window,document,'script','https://www.google-analytics.com/analytics.js','ga')
+
+    ga('create', 'UA-99993107-1', 'auto')
+    ga('send', 'pageview', '/design/product')
+  })
