@@ -48,7 +48,7 @@
     tags:
     - art
     - cms
-    time: 2016
+    time: 2016-2017
     details:
       summary: personal art collection catalog with bulk photo import, secured sensitive info, and day & night modes
       role: sole designer
@@ -107,14 +107,6 @@
       summary: internal tools
       role: product designer
       media: web
-  - title: Real
-    tags:
-    - matchmaking
-    time: 2017
-    details:
-      summary: platonic tinder clone
-      role: sole product designer
-      media: phone
   - title: Degreecast
     tags:
     - education
@@ -129,6 +121,14 @@
     time: 2017
     details:
       summary: corporate sms broadcast & chat service
+      role: sole product designer
+      media: phone
+  - title: Real
+    tags:
+    - matchmaking
+    time: 2015
+    details:
+      summary: platonic tinder clone
       role: sole product designer
       media: phone
 - title: Presentation
