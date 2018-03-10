@@ -13,7 +13,7 @@ $breakpoint-desktop: inspect((min-width: 1024px));
 
 $unit-stroke: 2px;
 
-* {box-sizing: border-box}
+*, *::before, *::after {box-sizing: border-box}
 html, body, main {
   width: 100%;
   height: 100%;
