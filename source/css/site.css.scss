@@ -181,10 +181,10 @@ section {
   }
 }
 #about {
+  grid-gap: 20px;
   grid-template-columns: 1fr 1fr;
-  @media (orientation:landscape) {
-    grid-template-columns: 1fr 1fr 1fr;
-  }
+  @media (orientation:landscape) {grid-template-columns: 1fr 1fr 1fr}
+  @media #{$breakpoint-tablet} {grid-gap: 32px}
   &.active {display: grid}
   span {@extend %display;}
 }
