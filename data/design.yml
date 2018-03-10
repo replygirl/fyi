@@ -143,7 +143,7 @@
     - audio
     time: 2017
     details:
-    - summary: sales deck
+      summary: sales deck
     images:
     - superpowered/1.png
     - superpowered/2.png
@@ -161,7 +161,7 @@
     - ad tech
     time: 2017
     details:
-    - summary: techstars seed investment pitch deck & identity update
+      summary: techstars seed investment pitch deck & identity update
     images:
     - syncspot/1.png
     - syncspot/2.png
@@ -175,7 +175,7 @@
     - incubator
     time: 2017
     details:
-    - summary: launch partner pitch deck
+      summary: launch partner pitch deck
     images:
     - hive/logo.png
     - hive/title.png
