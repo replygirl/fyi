@@ -46,6 +46,7 @@ h1, h2, h3, h4, %title, %subhead, %caption {
 h1, h2, %title {font: 300 20px/20px $font-family-header}
 h3       {font: 400 20px/20px $font-family-header}
 h4       {font: 200 12px/16px $font-family-body-script}
+%display {font: 400 34px/40px $font-family-body}
 %subhead {font: 300 16px/24px $font-family-header}
 %caption {font: 200 12px/14px $font-family-header}
 a, button, %emboldened {
@@ -172,10 +173,20 @@ nav > a {
 section {
   height: 100%;
   padding: 20px;
-  overflow-y: scroll;
   display: none;
   @media #{$breakpoint-tablet} {padding: 20px 32px}
-  &.active {display: flex}
+  &:not(#about) {
+    overflow-y: scroll;
+    &.active {display: flex}
+  }
+}
+#about {
+  grid-template-columns: 1fr 1fr;
+  @media (orientation:landscape) {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+  &.active {display: grid}
+  span {@extend %display;}
 }
 #design {
   flex-wrap: wrap;
