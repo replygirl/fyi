@@ -1,7 +1,7 @@
 angular.module('fyi', [])
   .controller('fyiController', ($scope) => {
     let fyi = $scope
-    fyi.state = 'design.product'
+    fyi.state = 'home'
     fyi.contact = false
 
     fyi.activeIf = s => fyi.state.includes(s) ? 'active' : ''

@@ -18,6 +18,9 @@ html ng-app='fyi'
         a[ng-class="activeIf('music')"
           ng-click="to('music')"] Music
     main
+      section#about ng-class="activeIf('home')"
+        - %w[I like to organize things].each do |word|
+          span = word
       section#design ng-class="activeIf('design')" = partial 'design'
       section#music ng-class="activeIf('music')" = partial 'music'
     aside#hello
