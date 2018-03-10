@@ -19,22 +19,23 @@ angular.module('fyi', [])
       let body = new FormData()
       body.append('key', '43b5fe9ff7818faadfae43ecaa0cab76be5ac346')
       body.append('to', 12063989614)
+      body.append('long', 1)
       body.append(
         'content',
         `New from ${fyi.message.name} (${fyi.message.email}): ${fyi.message.body}`
       )
-      body.append('long', 1)
+
       fetch('https://api.clockworksms.com/http/send.aspx', {
         method: 'POST', body: body
       })
       .catch(error => {
-        console.error('Error:', error)
+        console.error('Contact send error:', error)
         fyi.contact = 'error'
         alert('something went wrong :(')
         ga('send', 'event', 'Contact', 'Send', 'Error')
       })
       .then(res => {
-        console.log('Success:', res.json)
+        console.log('Contact send success:', res)
         fyi.contact = 'success'
         ga('send', 'event', 'Contact', 'Send', 'Success')
       })
