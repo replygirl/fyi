@@ -87,7 +87,11 @@
       role: sole designer, react native developer
       media: phone, tablet
     images:
-    - ok
+    - ivoo/home.jpg
+    - ivoo/task.jpg
+    - ivoo/article.jpg
+    - ivoo/reduce.jpg
+    - ivoo/rate.jpg
   - title: Edith
     tags:
     - concept
@@ -133,14 +137,6 @@
       media: phone
 - title: Presentation
   projects:
-  - title: HiveMVP
-    tags:
-    - incubator
-    time: 2017
-    details:
-    - summary: launch partner pitch deck
-    images:
-    - ok
   - title: Superpowered
     tags:
     - tech
@@ -149,12 +145,38 @@
     details:
     - summary: sales deck
     images:
-    - ok
+    - superpowered/1.png
+    - superpowered/2.png
+    - superpowered/3.png
+    - superpowered/4.png
+    - superpowered/5.png
+    - superpowered/6.png
+    - superpowered/7.png
+    - superpowered/8.png
+    - superpowered/9.png
+    - superpowered/10.png
+    - superpowered/11.png
   - title: Syncspot
     tags:
-    - advertising
+    - ad tech
     time: 2017
     details:
     - summary: techstars seed investment pitch deck & identity update
     images:
-    - ok
+    - syncspot/1.png
+    - syncspot/2.png
+    - syncspot/3.png
+    - syncspot/4.png
+    - syncspot/5.png
+    - syncspot/6.png
+    - syncspot/7.png
+  - title: HiveMVP
+    tags:
+    - incubator
+    time: 2017
+    details:
+    - summary: launch partner pitch deck
+    images:
+    - hive/logo.png
+    - hive/title.png
+    - hive/cubes.png
