@@ -3,9 +3,9 @@
 $color-design: #f9fbb2;
 $color-music: #b88e8d;
 $color-success: #aafac8;
-$font-family-header: 'Ministry';
-$font-family-body: 'Matrix II OT Book';
-$font-family-body-script: 'Matrix II Script OT Book';
+$font-family-header: 'ministry', 'Ministry';
+$font-family-body: 'matrix-ii', 'Matrix II OT Book';
+$font-family-body-script: 'matrix-ii-script', 'Matrix II Script OT Book';
 
 $breakpoint-phone: inspect((min-width: 356px));
 $breakpoint-phablet: inspect((min-width: 414px));
