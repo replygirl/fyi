@@ -59,12 +59,12 @@ html           {
   font: 300 14px/20px $font-family-body;
   letter-spacing: 0.25px;
 }
-h1, h2, h3, h4, %title, %subhead, %caption {
+h1, h2, h3, .meta, %title, %subhead, %caption {
   letter-spacing: initial
 }
 h1, h2, %title {font: 300 20px/20px $font-family-header}
 h3       {font: 400 20px/20px $font-family-header}
-h4       {font: 200 12px/16px $font-family-body-script}
+.meta    {font: 200 12px/16px $font-family-body-script}
 %display {font: 400 34px/40px $font-family-body}
 %subhead {font: 300 16px/24px $font-family-header}
 %caption {font: 200 12px/14px $font-family-header}
@@ -243,7 +243,7 @@ figcaption {
     padding: 20px 32px 20px 20px
   }
 }
-h4 {margin-bottom: 2px}
+.meta {margin-bottom: 2px}
 .tags {
   display: inline;
   li {
