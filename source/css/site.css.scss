@@ -139,6 +139,7 @@ nav > a {
   button {
     @extend %title;
     @extend %emboldened;
+    margin: 0;
     border: 2px solid black;
     background-color: white;
     padding: 10px;
@@ -181,6 +182,7 @@ section {
   display: none;
   @media #{$breakpoint-tablet} {padding: 20px 32px}
   &:not(#about) {
+    overflow-x: hidden;
     overflow-y: scroll;
     -webkit-overflow-scrolling: touch;
     &.active {display: flex}
