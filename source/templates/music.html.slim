@@ -1,0 +1,16 @@
+main#music
+  - urls = {\
+      soundcloud: 'https://soundcloud.com/imogennnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn',\
+      bandcamp: 'https://imogennnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn.bandcamp.com'\
+    }
+
+  ul
+    - data.music.each do |release|
+      li = part 'music-player', locals: {release: release}
+  aside
+    span
+      | Listen on
+      a href='#{urls[:soundcloud]}' Soundcloud
+    span
+      | Download on
+      a href='#{urls[:bandcamp]}' Bandcamp

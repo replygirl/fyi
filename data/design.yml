@@ -55,13 +55,13 @@
       media: phone, tablet
     images:
     - zilp/ipad/binder.jpg
-    - zilp/ipad/drag.jpg
-    - zilp/ipad/create.jpg
-    - zilp/ipad/slideshows.jpg
-    - zilp/ipad/slideshow.jpg
+    #- zilp/ipad/drag.jpg
     - zilp/iphone/camera.jpg
     - zilp/iphone/crop.jpg
     - zilp/iphone/mosaic.jpg
+    - zilp/ipad/create.jpg
+    - zilp/ipad/slideshows.jpg
+    - zilp/ipad/slideshow.jpg
   - title: Beanthere
     tags:
     - culinary
@@ -92,17 +92,6 @@
     - ivoo/article.jpg
     - ivoo/reduce.jpg
     - ivoo/rate.jpg
-  - title: Edith
-    tags:
-    - concept
-    - productivity
-    time: 2016
-    details:
-      summary: markdown text editor with pluggable syntax
-      media: desktop
-    images:
-    - edith/editor.jpg
-    - edith/store.jpg
   - title: Axios
     tags:
     - media, cms
@@ -111,6 +100,14 @@
       summary: internal tools
       role: product designer
       media: web
+  - title: Edith
+    tags:
+    - concept
+    - productivity
+    time: 2016
+    details:
+      summary: markdown text editor with pluggable syntax
+      media: desktop
   - title: Degreecast
     tags:
     - education

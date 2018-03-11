@@ -15,7 +15,7 @@ $breakpoint-desktop: inspect((min-width: 1024px));
 $unit-stroke: 2px;
 
 *, *::before, *::after {box-sizing: border-box}
-html, body, main {
+html, body, ui-view {
   width: 100%;
   height: 100%;
   overflow: hidden
@@ -43,11 +43,11 @@ html, body, main {
 
 @mixin linkColors {
   &:hover, &:active, &.active {
-    &[ng-click*='design'] {
+    &[ui-sref*='design'] {
       color: $color-design;
       &::after {background-color: $color-design}
     }
-    &[ng-click*='music'] {
+    &[ui-sref*='music'] {
       color: $color-music;
       &::after {background-color: $color-music}
     }
@@ -114,6 +114,8 @@ nav > a {
   @include linkColors;
   margin-left: 20px;
   cursor: pointer;
+  text-decoration: none;
+  color: inherit;
   &.active {pointer-events: none}
 }
 
@@ -176,24 +178,23 @@ nav > a {
   }
 }
 
-section {
+main {
   height: 100%;
   padding: 20px;
-  display: none;
   @media #{$breakpoint-tablet} {padding: 20px 32px}
   &:not(#about) {
+    display: flex;
     overflow-x: hidden;
     overflow-y: scroll;
     -webkit-overflow-scrolling: touch;
-    &.active {display: flex}
   }
 }
 #about {
+  display: grid;
   grid-gap: 20px;
   grid-template-columns: 1fr 1fr;
   @media (orientation:landscape) {grid-template-columns: 1fr 1fr 1fr}
   @media #{$breakpoint-tablet} {grid-gap: 32px}
-  &.active {display: grid}
   span {@extend %display;}
 }
 #design {
