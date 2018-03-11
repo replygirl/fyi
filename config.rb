@@ -26,7 +26,7 @@ configure :build do
 
   activate :minify_html
   activate :minify_css
-  #activate :minify_javascript, compressor: Uglifier.new(harmony: true)
+  # activate :minify_javascript, compressor: Uglifier.new(harmony: true)
   activate :imageoptim,
            pngout: false,
            svgo:   false,
