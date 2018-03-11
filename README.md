@@ -4,7 +4,7 @@ u already know who it is
 
 [middleman](https://middlemanapp.com) / [slim](http://slim-lang.com) / [sass](http://sass-lang.com)
 
-#### development
+### development
 
 **setup:** `bundle install`
 
