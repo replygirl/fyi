@@ -7,4 +7,4 @@ build/
 CNAME
 ROUTER
 .well-known/
-surge.pem
+*.pem
