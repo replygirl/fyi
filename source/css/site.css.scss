@@ -182,6 +182,7 @@ section {
   @media #{$breakpoint-tablet} {padding: 20px 32px}
   &:not(#about) {
     overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
     &.active {display: flex}
   }
 }
@@ -263,6 +264,7 @@ dt {
   display: flex;
   overflow-x: scroll;
   overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
   @media #{$breakpoint-phone} {padding-left: #{224px - $unit-stroke}}
   @media #{$breakpoint-phablet} {
     margin: 0 -32px;
