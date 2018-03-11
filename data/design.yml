@@ -100,22 +100,6 @@
       summary: internal tools
       role: product designer
       media: web
-  - title: Edith
-    tags:
-    - concept
-    - productivity
-    time: 2016
-    details:
-      summary: markdown text editor with pluggable syntax
-      media: desktop
-  - title: Degreecast
-    tags:
-    - education
-    time: 2017
-    details:
-      summary: web & identity redesign concept
-      role: sole designer & developer
-      media: web
   - title: '[REDACTED]'
     tags:
     - chat, hr, customer service
@@ -124,6 +108,22 @@
       summary: corporate sms broadcast & chat service
       role: sole product designer
       media: phone
+  - title: Degreecast
+    tags:
+    - education
+    time: 2017
+    details:
+      summary: web & identity redesign concept
+      role: sole designer & developer
+      media: web
+  - title: Edith
+    tags:
+    - concept
+    - productivity
+    time: 2016
+    details:
+      summary: markdown text editor with pluggable syntax
+      media: desktop
   - title: Real
     tags:
     - matchmaking
