@@ -1,0 +1,18 @@
+- data.design.each_with_index do |cat, i|
+  h2[ng-class="activeIf('design.#{cat.title.downcase}')"
+     ng-click="to('design.#{cat.title.downcase}')"] = cat.title
+  - cat.projects.each do |project|
+    figure class='#{'card' unless project.images}'
+      - if project.images
+        figcaption.card = partial 'design_card', locals: {project: project}
+        .figimages
+          - project.images.each do |source|
+            - if source.is_a? Hash
+              .stack class='#{source.os}'
+                - source.images.each do |url|
+                  = image_tag url
+            - else
+              = image_tag source
+          .spacer
+      - else
+        = partial 'design_card', locals: {project: project}

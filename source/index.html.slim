@@ -1,11 +1,45 @@
 doctype html
-html
-  == partial "html/head"
-  body.io
-    nav
-      a data-ref="page/design" design
-      a data-ref="page/music" music
+html ng-app='fyi'
+  head
+    meta charset='utf-8'
+    meta http-equiv='x-ua-compatible' content='ie=edge'
+    meta[name='viewport'
+         content='width=device-width, initial-scale=1, shrink-to-fit=no']
+    title = 'imogen'
+    link rel="stylesheet" href="https://use.typekit.net/sup4dii.css"
+    = stylesheet_link_tag 'site'
+    script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js'
+    = javascript_include_tag 'site'
+    = javascript_include_tag 'analytics'
+  body ng-controller='fyiController'
     header
+      h1 Imogen Olsen
+      nav
+        a[ng-class="activeIf('design')"
+          ng-click="to('design.product')"] Design
+        a[ng-class="activeIf('music')"
+          ng-click="to('music')"] Music
     main
-    aside.copy data-clipboard-text="im@imogen.fyi" say hi
-    == partial "html/scripts"
+      section#about ng-class="activeIf('home')"
+        - %w[Can I organize your closet?].each do |word|
+          span = word
+      section#design ng-class="activeIf('design')" = partial 'design'
+      section#music ng-class="activeIf('music')" = partial 'music'
+    aside#hello
+      button[ng-class="activeIfContact(false)"
+             ng-click='openContact()'] hello
+      form name='contactForm' ng-class="activeIfContact('open')"
+        input[type='text'
+              ng-model='message.name'
+              maxlength='30'
+              placeholder='who ru']
+        input[type='email'
+              ng-model='message.email'
+              maxlength='50'
+              placeholder='u@email.site']
+        textarea[ng-model='message.body'
+                 placeholder='whats up'
+                 maxlength='360'
+                 rows='3']
+        button[ng-click='sendContact()'
+               ng-disabled='contactForm.$invalid'] hey
