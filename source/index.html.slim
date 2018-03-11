@@ -7,39 +7,20 @@ html ng-app='fyi'
          content='width=device-width, initial-scale=1, shrink-to-fit=no']
     title = 'imogen'
     link rel="stylesheet" href="https://use.typekit.net/sup4dii.css"
-    = stylesheet_link_tag 'site'
+    = stylesheet_link_tag 'index'
     script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js'
-    = javascript_include_tag 'site'
+    script src='https://unpkg.com/@uirouter/angularjs/release/angular-ui-router.min.js'
+    = javascript_include_tag 'index'
     = javascript_include_tag 'analytics'
-  body ng-controller='fyiController'
+    = javascript_include_tag 'contact'
+    = javascript_include_tag 'routes'
+    = javascript_include_tag 'old-state'
+    = javascript_include_tag 'analytics'
+  body
     header
       h1 Imogen Olsen
       nav
-        a[ng-class="activeIf('design')"
-          ng-click="to('design.product')"] Design
-        a[ng-class="activeIf('music')"
-          ng-click="to('music')"] Music
-    main
-      section#about ng-class="activeIf('home')"
-        - %w[Can I organize your closet?].each do |word|
-          span = word
-      section#design ng-class="activeIf('design')" = partial 'design'
-      section#music ng-class="activeIf('music')" = partial 'music'
-    aside#hello
-      button[ng-class="activeIfContact(false)"
-             ng-click='openContact()'] hello
-      form name='contactForm' ng-class="activeIfContact('open')"
-        input[type='text'
-              ng-model='message.name'
-              maxlength='30'
-              placeholder='who ru']
-        input[type='email'
-              ng-model='message.email'
-              maxlength='50'
-              placeholder='u@email.site']
-        textarea[ng-model='message.body'
-                 placeholder='whats up'
-                 maxlength='360'
-                 rows='3']
-        button[ng-click='sendContact()'
-               ng-disabled='contactForm.$invalid'] hey
+        a[ui-sref='design' ui-sref-active='active'] Design
+        a[ui-sref='music' ui-sref-active='active'] Music
+    ui-view
+    = part 'contact'

@@ -5,6 +5,5 @@
 build/
 
 CNAME
-ROUTER
 .well-known/
 *.pem

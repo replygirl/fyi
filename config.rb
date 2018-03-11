@@ -1,13 +1,6 @@
-# Activate and configure extensions
-# https://middlemanapp.com/advanced/configuration/#configuring-extensions
-
-activate :autoprefixer do |prefix|
-  prefix.browsers = "last 2 versions"
-end
-
 set :layout, false
-set :js_dir, 'js'
 set :css_dir, 'css'
+set :js_dir, 'js'
 set :images_dir, 'images'
 
 # With alternative layout
@@ -16,28 +9,32 @@ set :images_dir, 'images'
 # Proxy pages
 # https://middlemanapp.com/advanced/dynamic-pages/
 
-# proxy(
-#   '/this-page-has-no-template.html',
-#   '/template-file.html',
-#   locals: {
-#     which_fake_page: 'Rendering a fake page with a local variable'
-#   },
-# )
+proxy '200.html', 'index.html'
 
 # Helpers
 # Methods defined in the helpers block are available in templates
 # https://middlemanapp.com/basics/helper-methods/
 
-# helpers do
-#   def some_helper
-#     'Helping'
-#   end
-# end
+helpers do
+  def part(dir, locals = nil)
+    locals ? partial("partials/#{dir}", locals) : partial("partials/#{dir}")
+  end
+end
 
-# Build-specific configuration
-# https://middlemanapp.com/advanced/configuration/#environment-specific-settings
+configure :build do
+  require 'uglifier'
 
-# configure :build do
-#   activate :minify_css
-#   activate :minify_javascript
-# end
+  activate :minify_html
+  activate :minify_css
+  # activate :minify_javascript, compressor: Uglifier.new(harmony: true)
+  activate :imageoptim,
+           pngout: false,
+           svgo:   false,
+           advpng:    { level: 3 },
+           optipng:   { level: 4 },
+           jpegoptim: { strip: ['all'], max_quality: 85 }
+
+  activate :autoprefixer do |prefix|
+    prefix.browsers = 'last 2 versions'
+  end
+end

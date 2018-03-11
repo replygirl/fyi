@@ -55,13 +55,13 @@
       media: phone, tablet
     images:
     - zilp/ipad/binder.jpg
-    - zilp/ipad/drag.jpg
-    - zilp/ipad/create.jpg
-    - zilp/ipad/slideshows.jpg
-    - zilp/ipad/slideshow.jpg
+    #- zilp/ipad/drag.jpg
     - zilp/iphone/camera.jpg
     - zilp/iphone/crop.jpg
     - zilp/iphone/mosaic.jpg
+    - zilp/ipad/create.jpg
+    - zilp/ipad/slideshows.jpg
+    - zilp/ipad/slideshow.jpg
   - title: Beanthere
     tags:
     - culinary
@@ -92,17 +92,6 @@
     - ivoo/article.jpg
     - ivoo/reduce.jpg
     - ivoo/rate.jpg
-  - title: Edith
-    tags:
-    - concept
-    - productivity
-    time: 2016
-    details:
-      summary: markdown text editor with pluggable syntax
-      media: desktop
-    images:
-    - edith/editor.jpg
-    - edith/store.jpg
   - title: Axios
     tags:
     - media, cms
@@ -110,14 +99,6 @@
     details:
       summary: internal tools
       role: product designer
-      media: web
-  - title: Degreecast
-    tags:
-    - education
-    time: 2017
-    details:
-      summary: web & identity redesign concept
-      role: sole designer & developer
       media: web
   - title: '[REDACTED]'
     tags:
@@ -127,6 +108,22 @@
       summary: corporate sms broadcast & chat service
       role: sole product designer
       media: phone
+  - title: Degreecast
+    tags:
+    - education
+    time: 2017
+    details:
+      summary: web & identity redesign concept
+      role: sole designer & developer
+      media: web
+  - title: Edith
+    tags:
+    - concept
+    - productivity
+    time: 2016
+    details:
+      summary: markdown text editor with pluggable syntax
+      media: desktop
   - title: Real
     tags:
     - matchmaking
