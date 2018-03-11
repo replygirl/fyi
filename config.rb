@@ -22,7 +22,7 @@ helpers do
 end
 
 configure :build do
-  require 'uglifier'
+  # require 'uglifier'
 
   activate :minify_html
   activate :minify_css
