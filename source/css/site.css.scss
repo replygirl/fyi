@@ -21,10 +21,9 @@ html, body, main {
   overflow: hidden
 }
 
-%underline {
+@mixin underline {
   position: relative;
   &::after {
-    content: ' ';
     position: absolute;
     left: 0;
     right: 0;
@@ -32,6 +31,26 @@ html, body, main {
     height: 2px;
     background-color: black;
     @media #{$breakpoint-phablet} {bottom: -8px}
+  }
+  &.active::after, &:active::after {content: ' '}
+  @media (any-hover: hover) {
+    &:hover::after {
+      content: ' ';
+      opacity: 0.25
+    }
+  }
+}
+
+@mixin linkColors {
+  &:hover, &:active, &.active {
+    &[ng-click*='design'] {
+      color: $color-design;
+      &::after {background-color: $color-design}
+    }
+    &[ng-click*='music'] {
+      color: $color-music;
+      &::after {background-color: $color-music}
+    }
   }
 }
 
@@ -91,25 +110,11 @@ header {
 }
 h1 {white-space: nowrap}
 nav > a {
+  @include underline;
+  @include linkColors;
   margin-left: 20px;
   cursor: pointer;
   &.active {pointer-events: none}
-  &.active, &:hover {
-    @extend %underline;
-    &[ng-click*='design'] {
-      color: $color-design;
-      &::after {background-color: $color-design}
-    }
-    &[ng-click*='music'] {
-      color: $color-music;
-      &::after {background-color: $color-music}
-    }
-  }
-  &.active, &:hover {
-    &[ng-click*='design'] {color: $color-design;}
-    &[ng-click*='music'] {color: $color-music;}
-  }
-  &:hover::after {opacity: .25}
 }
 
 #hello {
@@ -202,14 +207,13 @@ section {
   }
 }
 h2 {
+  @include underline;
   cursor: pointer;
   &:not(:last-child) {
     margin-right: 20px;
     @media #{$breakpoint-tablet} {margin-right: 32px}
   }
   &.active {pointer-events: none}
-  &.active, &:hover {@extend %underline;}
-  &:hover::after {opacity: .1}
 }
 figure {
   margin-top: 32px;
