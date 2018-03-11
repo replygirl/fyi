@@ -2,7 +2,7 @@
 
 u already know who it is
 
-[middleman](https://middlemanapp.com) / [slim](http://slim-lang.com) / [sass](https://sass-lang.com)
+[angularjs](https://angularjs.org)+[ui-router](https://ui-router.github.io) app built thru [middleman](https://middlemanapp.com) w/ [slim](http://slim-lang.com) & [sass](https://sass-lang.com)
 
 ### development
 
