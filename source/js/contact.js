@@ -21,5 +21,9 @@ fyi.controller('contact', ($scope) => {
     })
     $scope.contact = 'success'
     ga('send', 'event', 'Contact', 'Send', 'Success')
+    heap.addUserProperties({
+      "email": $scope.message.email,
+      "Name": $scope.message.name
+    });
   }
 });
