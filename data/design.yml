@@ -92,17 +92,28 @@
     - ivoo/article.jpg
     - ivoo/reduce.jpg
     - ivoo/rate.jpg
+  - title: Lighthouse
+    tags:
+    - healthcare
+    time: 2018
+    details:
+      summary: directory of providers vetted for queer care competencies
+      role: technical lead
+      media: web
   - title: Axios
     tags:
-    - media, cms
+    - media
+    - cms
     time: 2017
     details:
-      summary: internal tools
+      summary: publishing tools
       role: product designer
       media: web
   - title: '[REDACTED]'
     tags:
-    - chat, hr, customer service
+    - chat
+    - hr
+    - customer service
     time: 2017
     details:
       summary: corporate sms broadcast & chat service
