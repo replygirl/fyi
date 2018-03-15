@@ -9,15 +9,15 @@
       role: product strategist, sole designer
       media: web, phone
     images:
-    - roomfeed/web/campus.jpg
-    - roomfeed/web/location.jpg
-    - roomfeed/web/event.jpg
-    - roomfeed/ios/map.jpg
+    - roomfeed/web/campus.png
+    - roomfeed/web/location.png
+    - roomfeed/web/event.png
+    - roomfeed/ios/map.png
     - roomfeed/ios/location.jpg
     - roomfeed/ios/event.jpg
-    - roomfeed/ios/privacy.jpg
-    - roomfeed/ios/stats.jpg
-    - roomfeed/ios/history.jpg
+    - roomfeed/ios/privacy.png
+    - roomfeed/ios/stats.png
+    - roomfeed/ios/history.png
     - roomfeed/style.png
   - title: Fresco
     tags:
