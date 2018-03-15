@@ -1,5 +1,24 @@
 - title: Product
   projects:
+  - title: [REDACTED]
+    tags:
+    - analytics, education
+    time: 2018
+    details:
+      summary: geospatial analytics and events platform for universities, with social & privacy tools for students
+      role: product strategist, sole designer
+      media: web, phone
+    images:
+    - roomfeed/web/campus.jpg
+    - roomfeed/web/location.jpg
+    - roomfeed/web/event.jpg
+    - roomfeed/ios/map.jpg
+    - roomfeed/ios/location.jpg
+    - roomfeed/ios/event.jpg
+    - roomfeed/ios/privacy.jpg
+    - roomfeed/ios/stats.jpg
+    - roomfeed/ios/history.jpg
+    - roomfeed/style.png
   - title: Fresco
     tags:
     - photojournalism
