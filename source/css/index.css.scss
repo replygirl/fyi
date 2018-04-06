@@ -72,6 +72,13 @@ a, button, %emboldened {
   font-family: $font-family-header;
   font-weight: 400
 }
+[ui-sref], span[ng-click] {
+  @include linkColors;
+  cursor: pointer;
+  text-decoration: none;
+  color: inherit;
+  &.active {pointer-events: none}
+}
 
 body {
   display: flex;
