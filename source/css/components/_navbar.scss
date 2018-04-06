@@ -28,8 +28,10 @@ header {
 h1 {white-space: nowrap}
 nav > a {
   @include underline;
-  @include linkColors;
   margin-left: 20px;
+}
+[ui-sref] {
+  @include linkColors;
   cursor: pointer;
   text-decoration: none;
   color: inherit;
