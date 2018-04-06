@@ -30,10 +30,3 @@ nav > a {
   @include underline;
   margin-left: 20px;
 }
-[ui-sref] {
-  @include linkColors;
-  cursor: pointer;
-  text-decoration: none;
-  color: inherit;
-  &.active {pointer-events: none}
-}
