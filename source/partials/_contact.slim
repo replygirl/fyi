@@ -5,15 +5,18 @@ aside#hello ng-controller='contact'
     input[type='text'
           ng-model='message.name'
           maxlength='30's
-          placeholder='who ru']
+          placeholder='who ru'
+          required]
     input[type='email'
           ng-model='message.email'
           maxlength='50'
-          placeholder='u@email.site']
+          placeholder='u@email.site'
+          required]
     textarea[ng-model='message.body'
              placeholder='whats up'
              maxlength='360'
-             rows='3']
+             rows='3'
+             required]
     .controls
       span [ng-click='closeContact()'] nvm
       button[ng-click='sendContact()'
