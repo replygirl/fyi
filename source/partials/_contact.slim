@@ -14,5 +14,7 @@ aside#hello ng-controller='contact'
              placeholder='whats up'
              maxlength='360'
              rows='3']
-    button[ng-click='sendContact()'
-           ng-disabled='contactForm.$invalid'] hey
+    .controls
+      span [ng-click='closeContact()'] nvm
+      button[ng-click='sendContact()'
+             ng-disabled='contactForm.$invalid'] hey
