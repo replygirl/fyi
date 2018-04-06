@@ -1,0 +1,37 @@
+header {
+  @extend %title;
+  width: 44px;
+  padding: 20px 12px;
+  background-color: black;
+  color: white;
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: flex-start;
+  justify-content: space-between;
+  @media #{$breakpoint-phablet} {
+    width: 60px;
+    padding: 20px;
+  }
+  > * {
+    position: relative;
+    &:first-child {
+      transform-origin: bottom left;
+      transform: rotate(-90deg) translateY(100%)
+    }
+    &:last-child {
+      transform-origin: top left;
+      transform: rotate(-90deg) translateX(-100%)
+    }
+  }
+
+}
+h1 {white-space: nowrap}
+nav > a {
+  @include underline;
+  @include linkColors;
+  margin-left: 20px;
+  cursor: pointer;
+  text-decoration: none;
+  color: inherit;
+  &.active {pointer-events: none}
+}
