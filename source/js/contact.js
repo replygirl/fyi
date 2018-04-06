@@ -6,6 +6,10 @@ fyi.controller('contact', ($scope) => {
     $scope.contact = 'open'
     ga('send', 'event', 'Contact', 'Open')
   }
+  $scope.closeContact = () => {
+    $scope.contact = false
+    ga('send', 'event', 'Contact', 'Close')
+  }
   $scope.sendContact = () => {
     let body = new FormData()
     body.append('key', '43b5fe9ff7818faadfae43ecaa0cab76be5ac346')
