@@ -44,7 +44,7 @@ configure :build do
            svgo:   false,
            advpng:    { level: 3 },
            optipng:   { level: 4 },
-           jpegoptim: { strip: ['all'], max_quality: 85 }
+           jpegoptim: { strip: %w[all], max_quality: 80 }
 
   activate :autoprefixer do |prefix|
     prefix.browsers = 'last 2 versions'
