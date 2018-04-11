@@ -6,6 +6,8 @@ gem 'middleman-autoprefixer', '~> 2.9'
 gem 'middleman-imageoptim',
     git: 'https://github.com/plasticine/middleman-imageoptim',
     branch: 'master'
+gem 'middleman-robots',                '~> 1.3', '>= 1.3.3'
+gem 'middleman-search_engine_sitemap', '~> 1.4'
 
 gem 'slim', '~> 3.0', '>= 3.0.9'
 
