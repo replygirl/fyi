@@ -5,7 +5,11 @@ set :images_dir, 'images'
 
 set :url_root, 'https://imogen.fyi'
 activate :robots,
-         rules: [{user_agent: '*', allow: %w[/]}],
+         rules: [{
+           user_agent: '*',
+           disallow: %w[/about.html],
+           allow:    %w[/]
+         }],
          sitemap: "#{config[:url_root]}/sitemap.xml"
 activate :search_engine_sitemap,
          default_priority: 0.5,
