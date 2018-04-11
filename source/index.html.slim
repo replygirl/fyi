@@ -24,6 +24,29 @@ html ng-app='fyi'
     meta property='twitter:creator'     content='@imogennnmnnnnnn'
     meta property='twitter:title'       content='imogen'
 
+    script type='application/ld+json'
+      | {
+      |   "@context"        : "http://schema.org",
+      |   "@type"           : "Person",
+      |   "@id"             : "https://imogen.fyi",
+      |   "honorificPrefix" : "Miss"
+      |   "name"            : "Imogen Olsen",
+      |   "givenName"       : "Imogen",
+      |   "additionalName"  : "Moon",
+      |   "familyName"      : "Olsen",
+      |   "jobTitle"        : "Designer & developer",
+      |   "email"           : "mailto:im@imogen.fyi"
+      |   "gender"          : "demigirl",
+      |   "height"          : "71 inches",
+      |   "nationality"     : {
+      |     "@type"           : "Country",
+      |     "name"            : "USA"
+      |   },
+      |   "url"             : "https://imogen.fyi",
+      |   "sameAs"          : [ "https://twitter.com/imogennnmnnnnnn", "https://soundcloud.com/imogennnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn", "https://imogennnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn.bandcamp.com", "https://github.com/imogennnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn"
+      |   ]
+      | }
+
     link rel="stylesheet" href="https://use.typekit.net/sup4dii.css"
     = stylesheet_link_tag 'index'
     script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js'
