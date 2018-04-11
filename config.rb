@@ -14,7 +14,9 @@ activate :robots,
 activate :search_engine_sitemap,
          default_priority: 0.5,
          default_change_frequency: 'monthly',
-         process_url: -> (url) {url.sub('/templates', '').chomp('.html')},
+         process_url: -> (url) {
+           url.sub('/templates', '').chomp('.html').chomp('index.html')
+         },
          exclude_if: -> (page) {
            %w[200.html templates/about.html].include? page.normalized_path
          }
