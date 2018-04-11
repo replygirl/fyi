@@ -3,6 +3,7 @@ source 'https://rubygems.org'
 gem 'middleman',              '~> 4.2', '>= 4.2.1'
 gem 'middleman-minify-html',  '~> 3.4', '>= 3.4.1'
 gem 'middleman-autoprefixer', '~> 2.9'
+#gem 'uglifier',               '~> 4.1', '>= 4.1.8'
 gem 'middleman-imageoptim',
     git: 'https://github.com/plasticine/middleman-imageoptim',
     branch: 'master'
