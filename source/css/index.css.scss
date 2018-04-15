@@ -2,6 +2,7 @@
 
 $color-design: #f9fbb2;
 $color-music: #b88e8d;
+$color-thoughts: #93a3b1;
 $color-success: #aafac8;
 $font-family-header: 'ministry';
 $font-family-body: 'matrix-ii';
@@ -51,6 +52,10 @@ html, body, ui-view {
       color: $color-music;
       &::after {background-color: $color-music}
     }
+    &[ui-sref*='thoughts'] {
+      color: $color-thoughts;
+      &::after {background-color: $color-thoughts}
+    }
   }
 }
 
@@ -63,14 +68,15 @@ h1, h2, h3, .meta, %title, %subhead, %caption {
   letter-spacing: initial
 }
 h1, h2, %title {font: 300 20px/20px $font-family-header}
-h3       {font: 400 20px/20px $font-family-header}
-.meta    {font: 300 12px/16px $font-family-body-script}
-%display {font: 400 34px/40px $font-family-body}
-%subhead {font: 300 16px/24px $font-family-header}
-%caption {font: 200 12px/14px $font-family-header}
+h3         {font: 400 20px/20px $font-family-header}
+.meta      {font: 300 12px/16px $font-family-body-script}
+%display   {font: 400 34px/40px $font-family-body}
+%highlight {font: 300 20px/28px $font-family-body}
+%subhead   {font: 300 16px/24px $font-family-header}
+%caption   {font: 200 12px/14px $font-family-header}
 a, button, %emboldened {
   font-family: $font-family-header;
-  font-weight: 400
+  font-weight: 400;
 }
 [ui-sref], span[ng-click] {
   @include linkColors;
@@ -91,18 +97,21 @@ body {
 @import 'components/navbar';
 @import 'components/contact';
 
-main {
-  height: 100%;
+main {height: 100%}
+
+@mixin padded {
   padding: 20px;
   @media #{$breakpoint-tablet} {padding: 20px 32px}
-  &:not(#about) {
-    overflow-x: hidden;
-    overflow-y: scroll;
-    -webkit-overflow-scrolling: touch;
-  }
 }
+@mixin scrollable {
+  overflow-x: hidden;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
+}
+
 @import 'pages/about';
 @import 'pages/design';
 @import 'pages/music';
+@import 'pages/thoughts';
 
 @import 'themes';

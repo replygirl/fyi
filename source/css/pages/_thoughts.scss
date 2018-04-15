@@ -1,0 +1,70 @@
+$color: $color-thoughts;
+
+#thoughts {
+  display: flex;
+  flex-wrap: wrap;
+  article {
+    overflow: hidden;
+    @media #{$breakpoint-tablet}  {max-width: 50%}
+    @media #{$breakpoint-desktop} {max-width: calc(100% / 3)}
+    &:nth-child(odd) .pull {color: $color}
+    &:nth-child(even) {
+      background-color: $color;
+      .pull {color: white}
+    }
+  }
+  .article {
+    position: relative;
+    &::after {
+      content: "";
+      clear: both;
+      display: table;
+    }
+    > * {
+      width: 100%;
+      float: left;
+      padding-bottom: 500em;
+      margin-bottom: -500em;
+      &:not(:last-child) {margin-right: -100%}
+    }
+    .body {
+      @extend %highlight;
+      position: relative;
+      z-index: 1;
+      padding-top: 60px;
+      padding-left: 20px;
+      color: black;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      p:last-of-type, .title {
+        padding-bottom: 10px;
+      }
+      .author {
+        align-self: flex-end;
+        &::before {content: 'by '}
+      }
+    }
+    .pull {
+      @extend %display;
+      padding-top: 20px;
+      font-family: 'Matrix II Ext OT';
+      font-weight: 500;
+      text-decoration: underline;
+    }
+  }
+  a.article {
+    &:hover {
+      .body {color: white}
+      .pull {
+        background-color: black;
+        color: $color
+      }
+    }
+    .body {
+      @extend %subhead;
+      @extend %emboldened;
+      text-decoration: underline;
+    }
+  }
+}

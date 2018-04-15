@@ -1,4 +1,6 @@
 #design {
+  @include padded;
+  @include scrollable;
   display: flex;
   flex-wrap: wrap;
   h2 {order: -1;}

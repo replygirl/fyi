@@ -1,4 +1,6 @@
 #music {
+  @include padded;
+  @include scrollable;
   display: flex;
   flex-direction: column;
   aside {

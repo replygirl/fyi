@@ -6,12 +6,13 @@ main#thoughts
   - data.thoughts.each do |t|
     - case t.type
     - when 'article'
-      article.link: a href="#{t.url}"
-        = t.pullquote
-        .link
-          span = t.title
-          span = t.author
+      article: a.article href="#{t.url}"
+        .body
+          span.title = t.title
+          span.author = t.author
+        .pull = t.pullquote
     - else
-      article
-        = t.title
-        p = t.body
+      article.article
+        .body
+          p = t.body
+        .pull.narrow = t.title
