@@ -96,7 +96,6 @@ main {
   padding: 20px;
   @media #{$breakpoint-tablet} {padding: 20px 32px}
   &:not(#about) {
-    display: flex;
     overflow-x: hidden;
     overflow-y: scroll;
     -webkit-overflow-scrolling: touch;
