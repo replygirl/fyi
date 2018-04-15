@@ -6,9 +6,10 @@ fyi.config(($urlMatcherFactoryProvider, $stateProvider, $locationProvider) => {
   })
 
   for (const route of [
-      ['about',  ''],
-      ['music',  '/music'],
-      ['design', '/design']
+      ['about',    ''],
+      ['music',    '/music'],
+      ['design',   '/design'],
+      ['thoughts', '/thoughts']
   ]) {
     $stateProvider.state({
       name: route[0],

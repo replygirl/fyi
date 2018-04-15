@@ -1,0 +1,17 @@
+---
+title: thoughts | imogen
+---
+
+main#thoughts
+  - data.thoughts.each do |t|
+    - case t.type
+    - when 'article'
+      article.link: a href="#{t.url}"
+        = t.pullquote
+        .link
+          span = t.title
+          span = t.author
+    - else
+      article
+        = t.title
+        p = t.body
