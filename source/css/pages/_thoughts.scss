@@ -1,12 +1,16 @@
 $color: $color-thoughts;
 
 #thoughts {
+  @include scrollable;
   display: flex;
   flex-wrap: wrap;
   article {
     overflow: hidden;
-    @media #{$breakpoint-tablet}  {max-width: 50%}
-    @media #{$breakpoint-desktop} {max-width: calc(100% / 3)}
+    flex: 1;
+    flex-basis: 100%;
+    @media #{$breakpoint-tablet}  {flex-basis: 50%}
+    @media #{$breakpoint-desktop} {flex-basis: calc(100% / 3)}
+    &:last-child {padding-bottom: 56px}
     &:nth-child(odd) .pull {color: $color}
     &:nth-child(even) {
       background-color: $color;
@@ -32,11 +36,12 @@ $color: $color-thoughts;
       position: relative;
       z-index: 1;
       padding-top: 60px;
-      padding-left: 20px;
       color: black;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
+      padding-left: 20px;
+      @media #{$breakpoint-tablet} {padding-left: 32px;}
       p:last-of-type, .title {
         padding-bottom: 10px;
       }
