@@ -2,7 +2,7 @@
 
 $color-design: #f9fbb2;
 $color-music: #b88e8d;
-$color-thoughts: #cbc5ea;
+$color-moodboard: #cbc5ea;
 $color-success: #aafac8;
 $font-family-header: 'ministry';
 $font-family-body: 'matrix-ii';
@@ -52,9 +52,9 @@ html, body, ui-view {
       color: $color-music;
       &::after {background-color: $color-music}
     }
-    &[ui-sref*='thoughts'] {
-      color: $color-thoughts;
-      &::after {background-color: $color-thoughts}
+    &[ui-sref*='moodboard'] {
+      color: $color-moodboard;
+      &::after {background-color: $color-moodboard}
     }
   }
 }
@@ -112,6 +112,6 @@ main {height: 100%}
 @import 'pages/about';
 @import 'pages/design';
 @import 'pages/music';
-@import 'pages/thoughts';
+@import 'pages/moodboard';
 
 @import 'themes';

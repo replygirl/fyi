@@ -1,6 +1,6 @@
-$color: $color-thoughts;
+$color: $color-moodboard;
 
-#thoughts {
+#moodboard {
   @include scrollable;
   display: flex;
   flex-wrap: wrap;
@@ -9,18 +9,8 @@ $color: $color-thoughts;
     flex: 1;
     flex-basis: 100%;
     @media #{$breakpoint-tablet}  {flex-basis: 50%}
-    @media #{$breakpoint-desktop} {flex-basis: calc(100% / 3)}
-  }
-  .bleed {
-    min-height: 144px;
-    position: relative;
-    img {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      min-width: 100%;
-      min-height: 100%;
+    @media #{$breakpoint-desktop} {
+      &:not(.bleed) {flex-basis: calc(100% / 3)}
     }
   }
   article {
@@ -84,6 +74,24 @@ $color: $color-thoughts;
       @extend %subhead;
       @extend %emboldened;
       text-decoration: underline;
+    }
+  }
+  .bleed {
+    min-height: 320px;
+    position: relative;
+    img {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      min-width: 100%;
+      min-height: 100%;
+    }
+    a {
+      position: absolute;
+      bottom: 20px;
+      right: 0;
+      color: white;
     }
   }
 }

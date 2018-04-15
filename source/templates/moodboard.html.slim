@@ -1,0 +1,22 @@
+---
+title: moodboard | imogen
+---
+
+main#moodboard
+  - data.moodboard.each do |item|
+    - case item.type
+    - when 'article'
+      article: a.article href="#{item.url}"
+        .body
+          span.title = item.title
+          span.author = item.author
+        .pull = item.pullquote
+    - when 'image'
+      .bleed
+        img src="#{item.url}" target='_blank'
+        a href="#{item.source.url}" = item.source.name
+    - else
+      article.article
+        .body
+          p = item.body
+        .pull.narrow = item.title
