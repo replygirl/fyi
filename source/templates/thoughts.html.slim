@@ -11,6 +11,8 @@ main#thoughts
           span.title = t.title
           span.author = t.author
         .pull = t.pullquote
+    - when 'image'
+      .bleed: img src="#{t.url}"
     - else
       article.article
         .body

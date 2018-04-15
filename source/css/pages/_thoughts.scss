@@ -4,12 +4,26 @@ $color: $color-thoughts;
   @include scrollable;
   display: flex;
   flex-wrap: wrap;
-  article {
+  > * {
     overflow: hidden;
     flex: 1;
     flex-basis: 100%;
     @media #{$breakpoint-tablet}  {flex-basis: 50%}
     @media #{$breakpoint-desktop} {flex-basis: calc(100% / 3)}
+  }
+  .bleed {
+    min-height: 144px;
+    position: relative;
+    img {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      min-width: 100%;
+      min-height: 100%;
+    }
+  }
+  article {
     &:last-child {padding-bottom: 56px}
     &:nth-child(odd) .pull {color: $color}
     &:nth-child(even) {
