@@ -12,7 +12,7 @@
       a(href='//soundcloud.com/imogennnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn') soundcloud
       | .&#32;
     +section('tech')
-      | pm. design. dev. medical provider directory for queer people. campus management & geospatial analytics for schools. low-bandwidth messaging for support teams. program & professor directory for science & engineering students. ai-based canvassing for grassroots campaigns. if your mother could change the world, what would she change? bespoke cms for a national newsroom. reporting, dispatch, & content sales for amateur photojournalists & broadcast newsrooms. personal cms for art dealers & collectors. social restaurant reviews for picky eaters. did you know americans underspend on food relative to their income? markdown editor with syntax extensions for technical writers. morse code sms for the vision- and motor-impaired.
+      | pm. design. dev. medical provider directory for queer people. campus management & geospatial analytics for schools. low-bandwidth messaging for support teams. program & professor directory for science & engineering students. ai-based canvassing for grassroots campaigns. bespoke cms for a national newsroom. reporting, dispatch, & content sales for amateur photojournalists & broadcast newsrooms. personal cms for art dealers & collectors. social restaurant reviews for picky eaters. markdown editor with syntax extensions for technical writers. morse code sms for the vision- and motor-impaired.
 </template>
 
 <script>
