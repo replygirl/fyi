@@ -11,11 +11,11 @@ a website on the internet
 ## deploy
 
 ### with firebase
-1. npm install -g firebase-tools
-2. firebase login
-3. firebase init
-4. firebase deploy --only hosting
+1. `npm install -g firebase-tools`
+2. `firebase login`
+3. `firebase init`
+4. `firebase deploy --only hosting`
 
 ### with surge
-1. npm install -g surge
-2. surge dist
+1. `npm install -g surge`
+2. `surge dist`
