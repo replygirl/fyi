@@ -17,11 +17,19 @@
 
 <script>
 import Copyable from './components/Copyable.vue'
+import myfonts  from './vendor/myfonts.js'
+import heap     from './vendor/heap.js'
 
 export default {
   name: 'app',
   components: {
     Copyable
+  },
+  created () {
+    myfonts()
+  },
+  mounted () {
+    heap()
   }
 }
 </script>
@@ -43,8 +51,7 @@ body
 
 #app
   --line-height 28px
-  font-family Helvetica, Arial, sans-serif
-  font-weight 300
+  font-family 'BasicCommercialLTCom-Bold', Helvetica, Arial, sans-serif
   font-size 24px
   line-height var(--line-height)
 
