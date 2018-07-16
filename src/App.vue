@@ -12,21 +12,17 @@
       a(href='//soundcloud.com/imogennnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn') soundcloud
       | .&#32;
     +section('tech')
-      | pm. design. dev. medical provider directory for queer people. campus management & geospatial analytics for schools. low-bandwidth messaging for support teams. program & professor directory for science & engineering students. ai-based canvassing for grassroots campaigns. bespoke cms for a national newsroom. reporting, dispatch, & content sales for amateur photojournalists & broadcast newsrooms. personal cms for art dealers & collectors. social restaurant reviews for picky eaters. markdown editor with syntax extensions for technical writers. morse code sms for the vision- and motor-impaired.
+      | RRRRRRRRRRRRRRRRpm. design. dev. medical provider directory for queer people. campus management & geospatial analytics for schools. low-bandwidth messaging for support teams. program & professor directory for science & engineering students. ai-based canvassing for grassroots campaigns. bespoke cms for a national newsroom. reporting, dispatch, & content sales for amateur photojournalists & broadcast newsrooms. personal cms for art dealers & collectors. social restaurant reviews for picky eaters. markdown editor with syntax extensions for technical writers. morse code sms for the vision- and motor-impaired.
 </template>
 
 <script>
 import Copyable from './components/Copyable.vue'
-import myfonts  from './vendor/myfonts.js'
 import heap     from './vendor/heap.js'
 
 export default {
   name: 'app',
   components: {
     Copyable
-  },
-  created () {
-    myfonts()
   },
   mounted () {
     heap()
@@ -35,6 +31,18 @@ export default {
 </script>
 
 <style lang="stylus">
+@import url("//hello.myfonts.net/count/3710bb");
+
+path = '../public/webfonts/'
+@font-face
+  font-family 'BasicCommercialLTCom-Bold'
+  src url(path + '3710BB_0_0.eot');
+  src url(path + '3710BB_0_0.eot?#iefix') format('embedded-opentype'),
+      url(path + '3710BB_0_0.woff2') format('woff2'),
+      url(path + '3710BB_0_0.woff') format('woff'),
+      url(path + '3710BB_0_0.ttf') format('truetype')
+  font-weight bold
+  font-style normal
 *
   box-sizing border-box
 
@@ -52,6 +60,7 @@ body
 #app
   --line-height 28px
   font-family 'BasicCommercialLTCom-Bold', Helvetica, Arial, sans-serif
+  font-weight bold
   font-size 24px
   line-height var(--line-height)
 
