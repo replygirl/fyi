@@ -59,15 +59,17 @@ body
 
 #app
   --line-height 28px
+  --two-line-height calc(2 * var(--line-height))
+
   font-family 'BasicCommercialLTCom-Bold', Helvetica, Arial, sans-serif
   font-weight bold
   font-size 24px
   line-height var(--line-height)
 
-  height: calc(100% + calc(2 * var(--line-height)))
+  height: calc(100% + var(--two-line-height))
   max-width 640px
   margin-top calc(-1 * var(--line-height))
-  padding var(--line-height) 0 calc(2 * var(--line-height))
+  padding var(--line-height) var(--two-line-height) var(--two-line-height) 0
   transform-origin right top
   transform rotate(-2.5deg)
   overflow-y scroll
