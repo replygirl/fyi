@@ -9,7 +9,7 @@
 import copy from 'copy-to-clipboard'
 
 export default {
-  name: 'HelloWorld',
+  name: 'Copyable',
   data: function() { return {
     copied: false
   }},
