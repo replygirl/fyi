@@ -41,7 +41,14 @@ export default {
   margin-top calc(-1 * var(--line-height))
   padding var(--line-height) var(--two-line-height) calc(112px + var(--two-line-height)) 0
   @media (min-width: 960px)
-    padding-bottom var(--two-line-height)
+    --line-height 40px
+    font-size 34px
+    max-width 960px
+    padding-bottom 0
+  @media (min-width: 1680px)
+    --line-height 48px
+    font-size 48px
+    max-width 1280px
   transform-origin right top
   transform rotate(-2.5deg)
   overflow-y scroll

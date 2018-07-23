@@ -74,7 +74,11 @@ a
     right -10px
     width 252px
     height 121px
-  @media (min-width: 1024px)
+  @media (min-width: 768px)
+    right -10px
+    width 336px
+    height 162px
+  @media (min-width: 1152px)
     right -12px
     width 504px
     height 242px
