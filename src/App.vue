@@ -9,7 +9,12 @@ import heap  from './vendor/heap.js'
 export default {
   name:       'app',
   components: {Index},
-  mounted()   {heap()}
+  mounted() {
+    heap()
+    document.documentElement.setAttribute('style', `--bg: ${
+      Math.abs(new Date().getHours() - 11) < 6 ? '#51bae9' : 'black'
+    }`)
+  }
 }
 </script>
 
@@ -47,6 +52,7 @@ path = '../public/webfonts/382C02'
   margin-top 20px
 
 html
+  --bg black
   --line-height 20px
 
   font-family 'Gothic725', Helvetica, Arial, sans-serif
@@ -55,7 +61,7 @@ html
   line-height var(--line-height)
   -webkit-text-size-adjust 100%
 
-  background-color black
+  background-color var(--bg)
   color white
 
 html, body, #app
