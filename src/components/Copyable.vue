@@ -1,8 +1,7 @@
 <template lang='pug'>
   span.copyable
-    a(v-if='!copied' @click='copy') copy {{label}}
-    span(v-else) {{label}} copied
-    | .
+    a(v-if='!copied' @click='copy' v-text='label')
+    span(v-else) copied!
 </template>
 
 <script>
@@ -10,7 +9,7 @@ import copy from 'copy-to-clipboard'
 
 export default {
   name: 'Copyable',
-  data: function() { return {
+  data() {return {
     copied: false
   }},
   props: {
