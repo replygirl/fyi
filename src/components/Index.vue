@@ -77,6 +77,8 @@ main
   display flex
   align-items flex-start
   overflow-x scroll
+  scroll-snap-type mandatory
+  scroll-padding calc(var(--gap) * 2 + 32px)
   -webkit-overflow-scrolling touch
   margin 0 calc(var(--gap) * -1) calc(var(--gap) * -1) calc(var(--gap) * -1)
   padding 0 var(--gap) 0 calc(var(--gap) * 2 + 32px)
@@ -85,6 +87,7 @@ main
   > *
     position relative
     display inline-block
+    scroll-snap-align start
     min-width 280px
     max-width 336px
     padding var(--gap) 0
