@@ -6,8 +6,7 @@
       p working as a design director
       Copyable(label='copy my email' value='moon@moon.fyi')
     #psa
-      p i just saw suspiria
-      p good shit
+      a(href='//github.com/imogennnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn/fyi' v-text='v')
     section#work
       Job(v-for='j in jobs' :key='Object.values(j)[0]' :job='j')
       .projects: p(v-for='p in projects' :key='Object.values(p)[0]' v-text='p')
@@ -21,6 +20,9 @@ import {jobs, projects} from '@/data/work'
 export default {
   name: 'Index',
   components: {Copyable, Job},
+  props: {
+    v: String
+  },
   data() {return {
     jobs: jobs,
     projects: projects

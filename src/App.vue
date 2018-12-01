@@ -1,10 +1,10 @@
 <template lang='pug'>
-  #app: Index
+  #app: Index(v='7.0-beta')
 </template>
 
 <script>
 import Index from './components/Index.vue'
-import heap from './vendor/heap.js'
+import heap  from './vendor/heap.js'
 
 export default {
   name:       'app',
