@@ -53,6 +53,7 @@ html
   font-weight bold
   font-size 14px
   line-height var(--line-height)
+  -webkit-text-size-adjust 100%
 
   background-color black
   color white

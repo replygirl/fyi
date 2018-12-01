@@ -46,7 +46,11 @@ export default {
     'work work work work' auto\
     / 32px 1fr auto auto
   grid-gap var(--gap)
-  padding var(--gap)
+  padding:
+    var(--gap)\
+    calc(var(--gap) + env(safe-area-inset-right))\
+    var(--gap)\
+    calc(var(--gap) + env(safe-area-inset-left))
 
 #moon
   grid-area moon
@@ -76,16 +80,26 @@ main
 
 #work
   grid-area work
+  position relative
   display flex
   align-items flex-start
   overflow-x scroll
   scroll-snap-type mandatory
-  scroll-padding calc(var(--gap) * 2 + 32px)
+  scroll-padding calc(var(--gap) * 2 + 32px + env(safe-area-inset-left))
   -webkit-overflow-scrolling touch
-  margin 0 calc(var(--gap) * -1) calc(var(--gap) * -1) calc(var(--gap) * -1)
-  padding 0 var(--gap) 0 calc(var(--gap) * 2 + 32px)
+  margin:
+    0\
+    calc(calc(var(--gap) + env(safe-area-inset-right)) * -1)\
+    calc(var(--gap) * -1)\
+    calc(calc(var(--gap) + env(safe-area-inset-left)) * -1)
+  padding:
+    0\
+    calc(var(--gap) + env(safe-area-inset-right))\
+    0\
+    calc(var(--gap) * 2 + 32px + env(safe-area-inset-left))
   background-color #f4d58d
   color black
+
   > *
     position relative
     display inline-block
