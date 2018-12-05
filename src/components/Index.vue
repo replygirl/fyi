@@ -9,7 +9,7 @@
       a(href='//github.com/imogennnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn/fyi' v-text='v')
     section#work
       Job(v-for='j in jobs' :key='Object.values(j)[0]' :job='j')
-      .projects: p(v-for='p in projects' :key='Object.values(p)[0]' v-text='p')
+      .projects: p(v-for='p in projects' :key='p' v-text='p')
 </template>
 
 <script>
