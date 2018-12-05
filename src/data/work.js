@@ -22,10 +22,10 @@ export const jobs = {
     ]
   },
   lighthouse: {
+    description: 'queer healthcare directory',
     media: [
       'b2b2c web'
     ],
-    description: 'queer healthcare directory',
     roles: [
       'tech & design lead',
       'full-stack developer'
