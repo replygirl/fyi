@@ -1,6 +1,6 @@
 export const jobs = {
   twelve: {
-    description: 'transparent media ecosystem',
+    description: 'transparent media pipeline',
     media: [
       'b2b web',
       'b2c web',
