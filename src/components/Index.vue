@@ -19,7 +19,10 @@ import {jobs, projects} from '@/data/work'
 
 export default {
   name: 'Index',
-  components: {Copyable, Job},
+  components: {
+    Copyable,
+    Job
+  },
   props: {
     v: String
   },
