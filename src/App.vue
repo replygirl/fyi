@@ -1,5 +1,5 @@
 <template lang='pug'>
-  #app: Index(v='7.0-beta')
+  #app: Index(v='6.0')
 </template>
 
 <script>
