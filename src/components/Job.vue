@@ -1,6 +1,6 @@
 <template lang='pug'>
   .job
-    p(v-text='job.description')
+    h3(v-text='job.description')
     p: span.medium(v-for='m in job.media' :key='m' v-text='m')
     p(v-text='job.roles[0]')
     p: span.contribution(v-for='c in job.contributions' :key='c' v-text='c')

@@ -5,7 +5,7 @@
       p i'm a pm, designer, and developer
       p working as a design director
       Copyable(label='copy my email' value='moon@moon.fyi')
-    #psa
+    aside#meta
       a(href='//github.com/imogennnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn/fyi' v-text='v')
     section#work
       Job(v-for='j in jobs' :key='Object.values(j)[0]' :job='j')
@@ -73,7 +73,7 @@ main
 #more
   color #fb9f89
 
-#psa
+#meta
   @media (max-width 414px)
     display none
   color #facfad

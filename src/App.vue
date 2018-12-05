@@ -50,6 +50,8 @@ path = '../public/webfonts/382C02'
   text-decoration none
 * + p, p + *
   margin-top 20px
+h1, h2, h3, h4, h5, h6
+  font-size inherit
 
 html
   --bg black
