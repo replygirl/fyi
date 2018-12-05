@@ -2,20 +2,14 @@
 a website on the internet
 
 ## run
-1. `npm install`
-2. `npm run serve`
+1. `yarn`
+2. `yarn serve`
 
 ## build
-1. `npm run build`
+1. `yarn build`
 
 ## deploy
-
-### with firebase
-1. `npm install -g firebase-tools`
+1. `npm i -g firebase-tools`
 2. `firebase login`
 3. `firebase init`
-4. `firebase deploy --only hosting`
-
-### with surge
-1. `npm install -g surge`
-2. `surge dist`
+4. `firebase deploy`
