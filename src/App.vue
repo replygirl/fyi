@@ -11,9 +11,9 @@ import heap  from '@/vendor/heap.js'
 export default {
   name:       'app',
   components: {Index},
-  data() {return {location: [40.7186651, -73.9570632]}},
   computed: {
     ...mapState('time', ['now']),
+    ...mapState('location', ['location']),
     offset()  {return this.now.getTimezoneOffset()/60},
     sunrise() {return this.shift(getSunrise(...this.location))},
     sunset()  {return this.shift(getSunset(...this.location))},
@@ -21,7 +21,11 @@ export default {
   },
   watch: {daytime(cur, prev) {if (cur!==prev) this.paint()}},
   methods: {
-    shift(date) {return new Date(date.setHours(date.getHours()-this.offset))},
+    shift(date) {
+      date.setHours(date.getHours()-this.offset)
+      date.setDate(this.now.getDate())
+      return date
+    },
     paint() {
       document.documentElement.setAttribute('style', `--bg: ${
         this.daytime ? '#51bae9' : 'black'
@@ -72,11 +76,12 @@ h1, h2, h3, h4, h5, h6
 
 html
   --bg black
+  --font-size 14px
   --line-height 20px
 
   font-family 'Gothic725', Helvetica, Arial, sans-serif
   font-weight bold
-  font-size 14px
+  font-size var(--font-size)
   line-height var(--line-height)
   -webkit-text-size-adjust 100%
 

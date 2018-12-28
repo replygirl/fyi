@@ -1,6 +1,6 @@
 <template lang='pug'>
   #index
-    h1#moon moon
+    h1#moon(@click='locate' :style='`cursor: ${cursor}`') moon
     main
       p i'm a pm, designer, and developer
       p working as a design director
@@ -13,23 +13,24 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 import Copyable from '@/components/Copyable.vue'
 import Job      from '@/components/Job.vue'
 import {jobs, projects} from '@/data/work'
 
 export default {
   name: 'Index',
-  components: {
-    Copyable,
-    Job
-  },
-  props: {
-    v: String
-  },
+  components: {Copyable, Job},
   data() {return {
     jobs: jobs,
     projects: projects
-  }}
+  }},
+  computed: {
+    ...mapState('location', {cursor: s => s.locatable ? 'pointer' : 'initial'})
+  },
+  methods: {
+    locate() {this.$store.dispatch('location/locate')}
+  }
 }
 </script>
 
@@ -59,9 +60,19 @@ export default {
   grid-area moon
   font-size 0px
   width 32px
-  height 32px
+  height @width
   background-image url('../../public/img/moon.svg')
   background-size contain
+  position relative
+  &:hover::after
+    display block
+    font-size var(--font-size)
+    position absolute
+    top calc(100% + var(--line-height) / 2)
+    width 56px
+    display block
+    content 'match yr sky'
+    color #fb9f89
 
 main
   grid-area main
