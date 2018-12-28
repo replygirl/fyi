@@ -3,17 +3,34 @@
 </template>
 
 <script>
-import Index from './components/Index.vue'
-import heap  from './vendor/heap.js'
+import { mapState } from 'vuex'
+import { getSunrise, getSunset } from 'sunrise-sunset-js'
+import Index from '@/components/Index.vue'
+import heap  from '@/vendor/heap.js'
 
 export default {
   name:       'app',
   components: {Index},
+  data() {return {location: [40.7186651, -73.9570632]}},
+  computed: {
+    ...mapState('time', ['now']),
+    offset()  {return this.now.getTimezoneOffset()/60},
+    sunrise() {return this.shift(getSunrise(...this.location))},
+    sunset()  {return this.shift(getSunset(...this.location))},
+    daytime() {return !(this.now<this.sunrise || this.sunset<this.now)}
+  },
+  watch: {daytime(cur, prev) {if (cur!==prev) this.paint()}},
+  methods: {
+    shift(date) {return new Date(date.setHours(date.getHours()-this.offset))},
+    paint() {
+      document.documentElement.setAttribute('style', `--bg: ${
+        this.daytime ? '#51bae9' : 'black'
+      }`)
+    }
+  },
   mounted() {
     heap()
-    document.documentElement.setAttribute('style', `--bg: ${
-      Math.abs(new Date().getHours() - 11) < 6 ? '#51bae9' : 'black'
-    }`)
+    this.paint()
   }
 }
 </script>
