@@ -6,7 +6,7 @@
       p working as a design director
       Copyable(label='copy my email' value='moon@moon.fyi')
     aside#meta
-      a(href='//github.com/imogennnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn/fyi' v-text='v')
+      a(href='//github.com/mooooooooooooooon/fyi' v-text='tag')
     section#work
       Job(v-for='j in jobs' :key='Object.values(j)[0]' :job='j')
       .projects: p(v-for='p in projects' :key='p' v-text='p')
@@ -26,6 +26,7 @@ export default {
     projects: projects
   }},
   computed: {
+    ...mapState('version', ['tag']),
     ...mapState('location', {cursor: s => s.locatable ? 'pointer' : 'initial'})
   },
   methods: {

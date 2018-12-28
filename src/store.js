@@ -1,7 +1,22 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import axios from 'axios'
 
 Vue.use(Vuex)
+
+const version = {
+  namespaced: true,
+  state: {tag: ''},
+  mutations: {setTag(state, tag) {state.tag = tag}},
+  actions: {
+    async getTag({commit}) {
+      const res = await axios.get(
+        '//api.github.com/repos/mooooooooooooooon/fyi/releases/latest'
+      )
+      commit('setTag', res.data.tag_name)
+    }
+  }
+}
 
 const time = {
   namespaced: true,
@@ -28,4 +43,4 @@ const location = {
   }
 }
 
-export default new Vuex.Store({modules: {time, location}})
+export default new Vuex.Store({modules: {version, time, location}})

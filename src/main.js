@@ -10,3 +10,4 @@ new Vue({
 }).$mount('#app')
 
 store.dispatch('time/start')
+store.dispatch('version/getTag')
