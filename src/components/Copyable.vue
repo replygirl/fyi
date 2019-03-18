@@ -1,7 +1,7 @@
 <template lang='pug'>
-  span.copyable
-    a(v-if='!copied' @click='copy' v-text='label')
-    span(v-else) copied!
+  .copyable
+    a(v-if='!copied' @click='copy' v-text='labelBefore')
+    span(v-else v-text='labelAfter')
 </template>
 
 <script>
@@ -13,8 +13,9 @@ export default {
     copied: false
   }},
   props: {
-    label: String,
-    value: String
+    value: String,
+    labelBefore: String,
+    labelAfter: String
   },
   methods: {
     copy() {
@@ -23,3 +24,8 @@ export default {
   }
 }
 </script>
+
+<style scoped lang='stylus'>
+.copyable
+  display inline
+</style>

@@ -1,100 +1,99 @@
 <template lang='pug'>
-  #app: Index(v='6.1')
+  #app(@mousemove='move')
+    Index(:style='{transform: `translate(${x}px, ${y}px)`}')
+    Stripes
 </template>
 
 <script>
-import { mapState } from 'vuex'
-import { getSunrise, getSunset } from 'sunrise-sunset-js'
 import Index from '@/components/Index.vue'
+import Stripes from '@/components/Stripes.vue'
 import heap  from '@/vendor/heap.js'
 
 export default {
-  name:       'app',
-  components: {Index},
-  computed: {
-    ...mapState('time', ['now']),
-    ...mapState('location', ['location']),
-    offset()  {return this.now.getTimezoneOffset()/60},
-    sunrise() {return this.shift(getSunrise(...this.location))},
-    sunset()  {return this.shift(getSunset(...this.location))},
-    daytime() {return !(this.now<this.sunrise || this.sunset<this.now)}
+  name: 'app',
+  components: {
+    Index,
+    Stripes
   },
-  watch: {daytime(cur, prev) {if (cur!==prev) this.paint()}},
+  data() {
+    return {
+      x: 0,
+      y: 0
+    }
+  },
   methods: {
-    shift(date) {
-      date.setHours(date.getHours()-this.offset)
-      date.setDate(this.now.getDate())
-      return date
-    },
-    paint() {
-      document.documentElement.setAttribute('style', `--bg: ${
-        this.daytime ? '#51bae9' : 'black'
-      }`)
+    move(e) {
+      this.x = -(e.clientX - window.innerWidth/2)*(20/window.innerWidth)
+      this.y = -(e.clientY - window.innerHeight/2)*(20/window.innerHeight)
     }
   },
   mounted() {
     heap()
-    this.paint()
   }
 }
 </script>
 
 <style lang="stylus">
-@import url("//hello.myfonts.net/count/382c02");
-path = '../public/webfonts/382C02'
+@import url('//api.fontstore.com/webfonts/53b2ac8b-d49b-452a-812a-68efd57593aa')
 
 @font-face
-  font-family 'Gothic725'
-  font-weight normal
-  font-style normal
-  src url(path + '_0_0.eot')
-  src url(path + '_0_0.eot?#iefix') format('embedded-opentype'),
-      url(path + '_0_0.woff2') format('woff2'),
-      url(path + '_0_0.woff') format('woff'),
-      url(path + '_0_0.ttf') format('truetype')
-
-@font-face
-  font-family 'Gothic725'
+  font-family 'Associate Sans'
+  src local('AssociateSans-Medium')
   font-weight bold
-  font-style normal
-  src url(path + '_1_0.eot')
-  src url(path + '_1_0.eot?#iefix') format('embedded-opentype'),
-      url(path + '_1_0.woff2') format('woff2'),
-      url(path + '_1_0.woff') format('woff'),
-      url(path + '_1_0.ttf') format('truetype')
 
 *
   box-sizing border-box
   margin 0
   padding 0
+ul
   list-style-type none
-  text-decoration none
 * + p, p + *
-  margin-top 20px
+  //margin-top 10px
 h1, h2, h3, h4, h5, h6
+  font-weight inherit
   font-size inherit
+a
+  display inline-block
+  transform scale(1)
+  transform-origin bottom left
+  transition transform 75ms ease
+  &, &:link, &:visited, &:hover, &:active
+    text-decoration underline
+    color inherit
+    cursor pointer
+  @media (hover hover)
+    &:hover
+      transform scale(1.05)
 
 html
-  --bg black
-  --font-size 14px
-  --line-height 20px
+  --bg #7159a5
+  --fg #fff4d9
+  --font-size 34px
+  --line-height 40px
 
-  font-family 'Gothic725', Helvetica, Arial, sans-serif
+  font-family 'Associate Sans', Helvetica, Arial, sans-serif
   font-weight bold
   font-size var(--font-size)
   line-height var(--line-height)
   -webkit-text-size-adjust 100%
 
   background-color var(--bg)
-  color white
+  color var(--fg)
+
+  perspective 100px
 
 html, body, #app
   width 100%
   height 100%
-  overflow hidden
+  overflow-x hidden
+  overflow-y hidden
 
-a
-  &, &:link, &:visited, &:hover, &:active
-    color inherit
-    cursor pointer
+#app
+  overflow-y scroll
+  -webkit-overflow-scrolling touch
+  padding 56px 20px
+  @media (min-width 640px)
+    padding 56px 32px
+  @media (min-width 840px)
+    padding 56px
 </style>
