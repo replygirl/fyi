@@ -1,30 +1,75 @@
 <template lang='pug'>
-  #app(@mousemove='move')
-    Index(:style='{transform: `translate(${x}px, ${y}px)`}')
-    Stripes
+  - var tag = 'Product workflow, architecture, & design'
+  #app(@mousemove='findCursor($event)' @touchmove='findCursor($event)')
+    header(:style='`transform:translateY(${pos.y}px)`')
+      h1 Moon
+      .squish
+        span #{tag}
+        span / tools & docs for a better web
+    main(:style='`transform:translate(${-10*pos.x}px, ${-10*pos.y}px)`')
+      Swatch(
+        v-for='(projects, d) in work' :key='d'
+        :class='d'
+        :style="`\
+          --img:url('img/${d}.jpg');\
+          transform:translate(${4*d.length*pos.x}px, ${4*d.length*pos.y}px)`"
+        ) {{d}}
+        template(v-slot:after): ul: li(v-for='p in projects' v-text='p')
+    Shredder
+    aside
+      span Moon
+      span Product workflow, architecture, & design
+      span.ticker(content=tag) #{tag}
 </template>
 
 <script>
-import Index from '@/components/Index.vue'
-import Stripes from '@/components/Stripes.vue'
-import heap  from '@/vendor/heap.js'
+import Swatch from '@/components/Swatch.vue'
+import Shredder from '@/components/Shredder.vue'
+import heap   from '@/vendor/heap.js'
+import 'reset-css'
 
 export default {
   name: 'app',
   components: {
-    Index,
-    Stripes
+    Swatch,
+    Shredder
   },
   data() {
     return {
-      x: 0,
-      y: 0
+      pos: {
+        x: 0,
+        y: 0
+      },
+      work: {
+        'well-being': [
+          'community coat drive',
+          'queer-specializing provider directory'
+        ],
+        elections: [
+          'grassroots campaign management platform',
+          'ai canvassing toolkit'
+        ],
+        arts: [
+          'cultural movement incubation platform',
+          'mobile-first art inventory management system'
+        ],
+        media: [
+          'task-oriented cms',
+          'citizen photojournalism reporting platform & content marketplace'
+        ]
+      }
     }
   },
   methods: {
-    move(e) {
-      this.x = -(e.clientX - window.innerWidth/2)*(20/window.innerWidth)
-      this.y = -(e.clientY - window.innerHeight/2)*(20/window.innerHeight)
+    findCursor(e) {
+      this.pos.x = e.clientX / window.innerWidth
+      this.pos.y = e.clientY / window.innerHeight
+    },
+    getPos(f) {
+      console.log('it me')
+      const pos = [this.pos.x, this.pos.y].map(x => `${x * f}px`)
+      console.log(pos)
+      return pos
     }
   },
   mounted() {
@@ -36,64 +81,146 @@ export default {
 <style lang="stylus">
 @import url('//api.fontstore.com/webfonts/53b2ac8b-d49b-452a-812a-68efd57593aa')
 
-@font-face
-  font-family 'Associate Sans'
-  src local('AssociateSans-Medium')
-  font-weight bold
-
 *
   box-sizing border-box
-  margin 0
-  padding 0
-ul
-  list-style-type none
-* + p, p + *
-  //margin-top 10px
-h1, h2, h3, h4, h5, h6
-  font-weight inherit
-  font-size inherit
-a
-  display inline-block
-  transform scale(1)
-  transform-origin bottom left
-  transition transform 75ms ease
-  &, &:link, &:visited, &:hover, &:active
-    text-decoration underline
-    color inherit
-    cursor pointer
-  @media (hover hover)
-    &:hover
-      transform scale(1.05)
 
 html
-  --bg #7159a5
-  --fg #fff4d9
   --font-size 34px
   --line-height 40px
-
-  font-family 'Associate Sans', Helvetica, Arial, sans-serif
-  font-weight bold
+  font-family 'AssociateSans-Regular', Helvetica, Arial, sans-serif
   font-size var(--font-size)
   line-height var(--line-height)
   -webkit-text-size-adjust 100%
+  text-transform uppercase
 
+  --bg #eae1df
+  --fg black
   background-color var(--bg)
   color var(--fg)
-
-  perspective 100px
-
 html, body, #app
   width 100%
-  height 100%
-  overflow-x hidden
-  overflow-y hidden
+  height @width
+  overflow hidden
 
 #app
-  overflow-y scroll
-  -webkit-overflow-scrolling touch
-  padding 56px 20px
-  @media (min-width 640px)
-    padding 56px 32px
-  @media (min-width 840px)
-    padding 56px
+  display flex
+  flex-direction column
+
+  header
+    display flex
+    justify-content flex-start
+    h1
+      margin-top 12px
+      @media (min-width 480px)
+        margin-top 32px
+    .squish
+      display none
+      @media(min-width 480px)
+        display initial
+        flex 1
+        margin-top 8px
+        margin-left 56px
+        padding-bottom 17px
+        position relative
+        :last-child
+          position absolute
+          bottom 0
+          left 10px
+
+  main
+    flex 1
+    padding 20px
+    display grid
+    grid-template:
+      '.          elections .    .    ' 1fr\
+      '.          elections arts .    ' 2fr\
+      '.          elections arts media' 2fr\
+      'well-being elections arts media' max-content
+    grid-template-columns minmax(0, 9fr) minmax(0, 6fr) minmax(0, 8fr) min-content
+    @media (min-width 768px)
+      padding 32px 56px
+
+    .swatch
+      mix-blend-mode hard-light
+      &:not(:last-child)
+        margin-right -100%
+      .inner
+        background-color black
+        background-blend-mode hard-light
+        background-size cover
+
+      &.well-being
+        grid-area well-being
+        .inner
+            background-size cover
+            background-color #ff006b
+      &.elections
+        grid-area elections
+        .inner
+          background-color rgba(0,0,0,0.5)
+      &.arts
+        grid-area arts
+        z-index 10
+        .inner
+          background-size initial
+      &.media
+        grid-area media
+        .inner
+          background-position center
+          background-size 300%
+
+  aside
+    height 0
+    overflow hidden
+    @media (min-width 480px)
+      height initial
+      margin-right 104px
+      margin-bottom -12px
+      align-self flex-end
+      display flex
+    span
+      white-space nowrap
+      animation bob 8s ease-in-out -1s*math(0, 'random') infinite alternate
+      &:first-child
+        margin 13px 6px 0 0
+        animation-duration 7s
+        animation-delay -1s * math(0, 'random')
+
+  .ticker
+    $duration = 10s
+    grid-area side
+    position fixed
+    top 50%
+    left calc(100% + 20px)
+    transform-origin top left
+    transform rotate(90deg) translateX(-50%)
+    animation marquee $duration linear reverse infinite
+    &::before, &::after
+      content attr(content)
+      position absolute
+      top 0
+    &::before
+      animation fade $duration ease reverse infinite
+      left calc(-100% - 168px)
+    &::after
+      animation fade $duration ease infinite
+      left calc(100% + 168px)
+
+@keyframes bob
+  from
+    transform translateY(0)
+  to
+    transform translateY(4px)
+@keyframes fade
+  0%
+    opacity 0
+  10%
+    opacity 1
+  100%
+    opacity 1
+@keyframes marquee
+  from
+    transform rotate(90deg) translateX(calc(-100% - 84px))
+  to
+    transform rotate(90deg) translateX(calc(84px))
 </style>

@@ -28,4 +28,8 @@ export default {
 <style scoped lang='stylus'>
 .copyable
   display inline
+
+a
+  text-decoration underline
+  cursor pointer
 </style>
