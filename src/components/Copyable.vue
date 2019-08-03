@@ -1,7 +1,5 @@
 <template lang='pug'>
-  .copyable
-    a(v-if='!copied' @click='copy' v-text='labelBefore')
-    span(v-else v-text='labelAfter')
+  a(@click='copy' :aria-disabled='copied') {{label}}
 </template>
 
 <script>
@@ -17,6 +15,11 @@ export default {
     labelBefore: String,
     labelAfter: String
   },
+  computed: {
+    label() {
+      return this.copied ? this.labelAfter : this.labelBefore
+    }
+  },
   methods: {
     copy() {
       this.copied = copy(this.value)
@@ -29,7 +32,9 @@ export default {
 .copyable
   display inline
 
-a
-  text-decoration underline
-  cursor pointer
+a[aria-disabled='true']
+  pointer-events none
+  cursor not-allowed
+  text-decoration none
+  color currentColor
 </style>
