@@ -1,12 +1,18 @@
 <template lang='pug'>
   #app
     header
-      h1 Moon
-      p Process & product manager
-    main
-    footer
-      a(:href='soundcloud') I also make music
-      p moon (at) moon (dot) fyi
+      h1 Imogen Moon
+      p She/they
+      ul
+        li Product management
+        li Urban & labor studies
+    main: ul
+      li Community art infrastructure
+      li Tools for better documentation
+      li Green product architecture
+    footer: ul
+      li Music: half sister (dot) bandcamp (dot) com
+      li Email: moon (at) moon (dot) fyi
 </template>
 
 <script>
@@ -14,91 +20,42 @@ import heap from '@/vendor/heap.js'
 import 'reset-css'
 
 export default {
-  name: 'app',
-  data() {
-    return {
-      soundcloud: 'https://soundcloud.com/halfsister'
-    }
-  },
+  name: `app`,
   mounted() {
     heap(process.env.VUE_APP_HEAP_ID)
   }
 }
 </script>
 
-<style lang="stylus">
-@import url('//api.fontstore.com/webfonts/53b2ac8b-d49b-452a-812a-68efd57593aa')
+<style lang='stylus'>
+@font-face
+  font-family 'Public Sans'
+  font-weight bold
+  src url('assets/fonts/PublicSans-Bold.woff2') format('woff2')
 
-button()
-  --color black
-  display inline-block
-  position relative
-  margin 0 -10px
-  padding 0 10px
-  line-height 30px
-  height @line-height
-  border 0.5px solid var(--color)
-  box-shadow 2px 2px var(--color)
-  background-color white
-  color var(--color)
-  text-decoration none
-  transition all 100ms ease-in
-  @media (hover: hover)
-    &:hover
-      transform translateX(1px)
-      box-shadow 0px 0px var(--color)
-
-*
+*, *::before, *::after
   box-sizing border-box
 
-:root, body, #app
-  width 100%
+html, body, #app
   height 100%
 
 :root
-  --color-primary #dfeaea
-  --color-secondary #eae0df
-  font-family 'Clash Moon', Helvetica, Arial, sans-serif
   -webkit-text-size-adjust 100%
-  font-size 15px
-  line-height 10px
-  background-color white
-  color black
+  font-family 'Public Sans', Helvetica, Arial, sans-serif
+  font-weight bold
+  font-size 34px
+  line-height 40px
+  letter-spacing -0.06em
+  text-transform uppercase
+  text-align center
+  background-color #d7d4ac
+  color #10b4d9
 
 #app
-  display flex
-  flex-direction column
-
-main
-  flex 1
-  background-color var(--color-secondary)
-
-header, footer
   padding 20px
-  background-image embedurl('assets/zigzag.svg', 'utf8')
-  > *:not(:first-child)
-    margin-top 10px
-  h1, p
-    display block
-    margin 0 -20px
-    padding 0 20px
-    background-color var(--color-primary)
-  h1
-    font-size 30px
-    line-height 20px
-    height @line-height
-  p
-    height 10px
-
-header
-  padding-bottom 40px
-
-footer
-  padding-top 40px
   display flex
   flex-direction column
-  a
-    button()
-    --color #f30
-    align-self flex-end
+  justify-content center
+  *:not(:last-child)
+    margin-bottom 20px
 </style>
