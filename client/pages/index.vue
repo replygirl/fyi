@@ -1,3 +1,3 @@
 <template lang='pug'>
-  main index
+  main#index(role='tabpanel') index
 </template>
