@@ -1,9 +1,6 @@
-
 export default {
   mode: 'universal',
-  /*
-  ** Headers of the page
-  */
+  srcDir: __dirname,
   head: {
     title: process.env.npm_package_name || '',
     meta: [
@@ -15,48 +12,17 @@ export default {
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
     ]
   },
-  /*
-  ** Customize the progress-bar color
-  */
   loading: { color: '#0af' },
-  /*
-  ** Global CSS
-  */
-  css: [
-  ],
-  /*
-  ** Plugins to load before mounting the App
-  */
-  plugins: [
-  ],
-  /*
-  ** Nuxt.js dev-modules
-  */
-  buildModules: [
-  ],
-  /*
-  ** Nuxt.js modules
-  */
+  //css: [],
+  //plugins: [],
+  //buildModules: [],
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
     // Doc: https://github.com/nuxt-community/dotenv-module
-    '@nuxtjs/dotenv',
-  ],
-  /*
-  ** Axios module configuration
-  ** See https://axios.nuxtjs.org/options
-  */
-  axios: {
-  },
-  /*
-  ** Build configuration
-  */
-  build: {
-    /*
-    ** You can extend webpack config here
-    */
-    extend (config, ctx) {
-    }
-  }
+    '@nuxtjs/dotenv',],
+  //axios: {},
+  //build: {
+  //  extend (config, ctx) {}
+  //}
 }
