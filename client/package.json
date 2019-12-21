@@ -5,7 +5,7 @@
   "author": "moon",
   "private": true,
   "engines": {
-    "node": "12.x"
+    "node": ">=12.x"
   },
   "scripts": {
     "dev": "nuxt",
@@ -14,9 +14,14 @@
     "generate": "nuxt generate"
   },
   "dependencies": {
-    "nuxt": "^2.0.0",
     "@nuxtjs/axios": "^5.3.6",
-    "@nuxtjs/dotenv": "^1.4.0"
+    "@nuxtjs/dotenv": "^1.4.0",
+    "nuxt": "^2.0.0"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "pug": "^2.0.4",
+    "pug-plain-loader": "^1.0.0",
+    "stylus": "^0.54.7",
+    "stylus-loader": "^3.0.2"
+  }
 }
