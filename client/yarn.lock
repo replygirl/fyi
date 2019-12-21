@@ -7093,6 +7093,13 @@ void-elements@^2.0.1:
   resolved "https://registry.yarnpkg.com/void-elements/-/void-elements-2.0.1.tgz#c066afb582bb1cb4128d60ea92392e94d5e9dbec"
   integrity sha1-wGavtYK7HLQSjWDqkjkulNXp2+w=
 
+vue-clickout@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/vue-clickout/-/vue-clickout-1.0.0.tgz#a353015465a693827435e1ab8a350f5d895dbcb0"
+  integrity sha512-mYGihgRBti1jX5OBn2t7QkmEIgcCIbPewMWpk1NHMWqUSGM+vnvqzKFz3rw3omUYElFWE0rtkPINTLfQO7QiqA==
+  dependencies:
+    loose-envify "^1.2.0"
+
 vue-client-only@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/vue-client-only/-/vue-client-only-2.0.0.tgz#ddad8d675ee02c761a14229f0e440e219de1da1c"

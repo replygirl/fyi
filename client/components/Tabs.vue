@@ -4,6 +4,7 @@
     aria-label='pages'
     tabindex='0'
     @focus='focused = true'
+    v-on-clickout='() => (focused = false)'
     @keydown.tab='focused = false'
     @keyup.left='prev'
     @keyup.right='next'
@@ -14,7 +15,7 @@
       :class='{ active: active===r.name }'
     )
       button(
-        @click='activate(r.name)'
+        @click='click(r.name)'
         role='tab'
         tabindex='-1'
         :aria-selected='active===r.name'
@@ -26,36 +27,42 @@
 
 <script>
 import { focus } from 'vue-focus'
+import { directive as onClickout } from 'vue-clickout'
 
 export default {
   name: 'Tabs',
-  directives: { focus },
+  directives: {
+    focus,
+    onClickout
+  },
   props: {
     routes: Array
   },
   data() {
     return {
-      active: this.$route.name,
-      focused: false,
+      focused: false
     }
   },
   computed: {
+    active() {
+      return this.$route.name
+    },
     index() {
       return this.routes.findIndex(r => r.name===this.active)
     }
   },
   methods: {
-    activate(name) {
-      this.active = name
+    click(name) {
+      this.focused = false
       this.$router.push({ name })
     },
     next() {
       if (this.index + 1 < this.routes.length)
-        this.activate(this.routes[this.index + 1].name)
+        this.$router.push({ name: this.routes[this.index + 1].name })
     },
     prev() {
       if (this.index - 1 >= 0)
-        this.activate(this.routes[this.index - 1].name)
+        this.$router.push({ name: this.routes[this.index - 1].name })
     }
   }
 }
