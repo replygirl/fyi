@@ -31,25 +31,12 @@ import { directive as onClickout } from 'vue-clickout'
 
 export default {
   name: 'Tabs',
-  directives: {
-    focus,
-    onClickout
-  },
-  props: {
-    routes: Array
-  },
-  data() {
-    return {
-      focused: false
-    }
-  },
+  directives: { focus, onClickout },
+  props: { routes: Array },
+  data() { return { focused: false }},
   computed: {
-    active() {
-      return this.$route.name
-    },
-    index() {
-      return this.routes.findIndex(r => r.name===this.active)
-    }
+    active() { return this.$route.name },
+    index() { return this.routes.findIndex(r => r.name===this.active) }
   },
   methods: {
     click(name) {
