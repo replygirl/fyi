@@ -1,7 +1,7 @@
 {
   "version": 2,
   "builds": [
-    { "src": "client/nuxt.config.js", "use": "@nuxt/now-builder" }
+    { "src": "client/nuxt.config.js", "use": "@nuxtjs/now-builder" }
   ],
   "routes": [
     {
