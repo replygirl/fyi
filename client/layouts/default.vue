@@ -1,7 +1,8 @@
 <template lang='pug'>
-  #app
-    header
+  #app.column
+    header.column
       h1 moon
+      hr
       nav: Tabs(v-bind='{ routes }')
       button(tabindex='0') another focusable
     nuxt
@@ -25,14 +26,3 @@ export default {
   }
 }
 </script>
-
-<style lang='stylus'>
-#app
-  text-align center
-
-nav
-  display inline-block
-
-button:focus
-  color red
-</style>
