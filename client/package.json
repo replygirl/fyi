@@ -4,6 +4,9 @@
   "description": "a person",
   "author": "moon",
   "private": true,
+  "engines": {
+    "node": "12.x"
+  },
   "scripts": {
     "dev": "nuxt",
     "build": "nuxt build",
