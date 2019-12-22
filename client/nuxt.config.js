@@ -17,8 +17,8 @@ export default {
   },
   loading: { color: '#0af' },
   css: [
-    '@/assets/index.styl',
-    'destyle.css'
+    'destyle.css',
+    '@/assets/index.styl'
   ],
   //plugins: [],
   //buildModules: [],
