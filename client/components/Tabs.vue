@@ -61,6 +61,7 @@ ul
 
 li
   border 0.5px solid var(--primary)
+  color var(--primary)
   &:not(:first-child)
     border-left none
 
