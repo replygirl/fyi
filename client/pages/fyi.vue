@@ -6,19 +6,19 @@
     h3 analytics:
     ul.column
       li
-        a(href) heap
+        a(href='https://docs.heap.io') heap
         span for traffic & engagement
       li
-        a(href) sentry
+        a(href='https://docs.sentry.io') sentry
         span for error logging
-      li: button disable sentry
+      li: button disable heap & sentry
     hr
     span
       | built with
       ul
-        li: a(href) nuxt
-        li: a(href) airtable
-        li: a(href) now
+        li: a(href='https://nuxtjs.org/guide') nuxt
+        li: a(href='https://airtable.com/api') airtable
+        li: a(href='https://zeit.co/docs') now
     span
 
 </template>
