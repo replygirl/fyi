@@ -50,8 +50,10 @@ export default {
 </script>
 
 <style lang='stylus'>
-@import url('https://fonts.googleapis.com/css?family=IBM+Plex+Mono:400,400i,700&display=swap')
+@import 'assets/style/text'
+@import 'assets/style/color'
 
-:root
-  font-family 'IBM Plex Mono', monospace
+li, h6
+  border-bottom 0.5px solid var(--color)
+  padding 10px 0
 </style>
