@@ -53,6 +53,41 @@ export default {
 @import 'assets/style/text'
 @import 'assets/style/color'
 
+// CONTAINER
+
+:root
+  min-height 100%
+  padding 40px
+  display flex
+  flex-direction column
+  justify-content center
+
+body, #app
+  height 100%
+
+#app
+  max-width 1080px
+  margin 0 auto
+
+// PAGE
+
+header
+  margin-bottom 40px
+
+main
+  display grid
+  gap 40px
+  grid-template-columns repeat(2, 1fr)
+  @media (min-width 720px)
+    grid-template-columns repeat(3, 1fr)
+
+  section:first-child
+    grid-column 1 / span 2
+    @media (min-width 720px)
+      grid-column initial
+
+// ELEMENTS
+
 li, h6
   border-bottom 0.5px solid var(--color)
   padding 10px 0
