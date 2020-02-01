@@ -17,25 +17,25 @@
         h6 Past
         ul
           li
-            | role a
+            span role a
             a(href='') team a
           li
-            | role b
+            span role b
             a(href='') team b
           li
-            | role c
+            span role c
             a(href='') team c
       section
         h6 Present
         ul
           li
-            | role a
+            span role a
             a(href='') team a
           li
-            | role b
+            span role b
             a(href='') team b
           li
-            | role c
+            span role c
             a(href='') team c
           li thing d
           li thing e
@@ -91,4 +91,7 @@ main
 li, h6
   border-bottom 0.5px solid var(--color)
   padding 10px 0
+
+li span
+  font-weight bold
 </style>
