@@ -1,8 +1,7 @@
 # fyi
 
 ## Setup
-1. _Optional:_ Create your [Heap](https://heap.io) environment(s)
-2. Create an [Airtable](http://airtable.com) base with the following tables:
+1. Create an [Airtable](http://airtable.com) base with the following tables:
   - `intro`
     - Text field (primary): `text`
     - URL field: `url`
@@ -10,35 +9,44 @@
     - Text field (primary): `role`
     - Text field: `project`
     - URL field: `projectUrl`
-3. Install dependencies:
+2. Install dependencies:
     ```
     yarn
     ```
-4. Install [Now](https://zeit.co/home) globally:
+3. Install [Now](https://zeit.co/home) globally:
     ```
     npm i -g now
     ```
 
-## Development
-1. Add local environment variables:
+### Development
+1. Add your Airtable base's info to a `.env` file at the root directory:
     ```
     AIRTABLE_BASE_ID=<your airtable base id>
     AIRTABLE_API_KEY=<your airtable api key>
-    VUE_APP_HEAP_APP_ID=<your heap app id>
     ```
 2. Serve locally:
     ```
     now dev
     ```
 
-## Deployment
-1. Add environment variables for Now:
+### Deployment
+1. Add your Airtable base's info as [Now Secrets](https://zeit.co/docs/v2/serverless-functions/env-and-secrets/):
     ```
     now secrets add airtable-base-id <your airtable base id>
     now secrets add airtable-api-key <your airtable api key>
-    now secrets add vue-app-heap-app-id <your heap app id>
     ```
-2. Deploy:
+2. _If not using automated deployment:_ Deploy:
     ```
     now
+    ```
+
+## _Optional:_ Adding analytics
+1. Create your [Heap](https://heap.io) environment(s)
+2. Add a Heap environment's ID to a `.env.build` at the root directory:
+    ```
+    VUE_APP_HEAP_APP_ID=<your heap app id>
+    ```
+3. Add your production Heap environment's ID as a Now Secret:
+    ```
+    now secrets add vue-app-heap-app-id <your heap app id>
     ```
