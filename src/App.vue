@@ -5,7 +5,7 @@
         circle(cx='1' cy='1' r='1')
       section
         h1 Imogen Moon
-        | she/they
+        span she/they
       section
         span moon at moon dot fyi
         a(href='https://soundcloud.com/halfsister') soundcloud.com/halfsister
