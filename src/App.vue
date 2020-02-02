@@ -45,9 +45,23 @@
 
 <script>
 import 'destyle.css'
+import axios from 'axios'
 
 export default {
-  name: 'app'
+  name: 'app',
+  data() {
+    return {
+      intro: [],
+      roles: [],
+      errors: []
+    }
+  },
+  async created() {
+    try {
+      const { data: { intro, roles }} = await axios.get('/api/copy')
+      Object.assign(this, { intro, roles })
+    } catch (error) { this.errors.push({ from: 'App/created', ...error }) }
+  }
 }
 </script>
 
