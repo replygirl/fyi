@@ -12,35 +12,19 @@
     main
       section
         ul
-          li copy a
-          li copy b
-          li copy c
-      section
-        h6 Past
+          li(v-for='{ text, url } in intro' :key='text')
+            a(v-if='url' :href='url' v-text='text')
+            span(v-else v-text='text')
+      section(v-for='era in eras' :key='era')
+        h6(v-text='era')
         ul
-          li
-            span role a
-            a(href='') team a
-          li
-            span role b
-            a(href='') team b
-          li
-            span role c
-            a(href='') team c
-      section
-        h6 Present
-        ul
-          li
-            span role a
-            a(href='') team a
-          li
-            span role b
-            a(href='') team b
-          li
-            span role c
-            a(href='') team c
-          li thing d
-          li thing e
+          li(
+            v-for='({ role, project: { name, url }}, i) in rolesFrom(era)' :key='`${era}-${i}`'
+          )
+            span(v-text='role')
+            template(v-if='name')
+              a(v-if='url' :href='url' v-text='name')
+              span(v-else v-text='name')
 </template>
 
 <script>
@@ -56,11 +40,22 @@ export default {
       errors: []
     }
   },
+  computed: {
+    eras() {
+      return this.roles.reduce((eras, { era }) =>
+        eras.includes(era) ? eras: [...eras, era],
+        []
+      )
+    },
+  },
   async created() {
     try {
       const { data: { intro, roles }} = await axios.get('/api/copy')
       Object.assign(this, { intro, roles })
     } catch (error) { this.errors.push({ from: 'App/created', ...error }) }
+  },
+  methods: {
+    rolesFrom(era) { return this.roles.filter(r => r.era===era) }
   }
 }
 </script>
@@ -118,17 +113,17 @@ main
 
 // ELEMENTS
 
+span
+  display block
+
 li, h6
   border-bottom 0.5px solid var(--color)
   padding 10px 0
 
-span
-  display block
-
 li
   display flex
   flex-wrap wrap
-  span
+  *:first-child
     flex 1 1 auto
 
 .moon
