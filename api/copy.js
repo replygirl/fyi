@@ -29,7 +29,8 @@ const fetchRoles = () => new Promise((resolve, reject) =>
         project: {
           name: r.get('project'),
           url: r.get('projectUrl')
-        }
+        },
+        era: r.get('era')
       })))
     )
 )

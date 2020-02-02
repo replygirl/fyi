@@ -9,6 +9,7 @@
       - Text field (primary): `role`
       - Text field: `project`
       - URL field: `projectUrl`
+      - Single select field: `era`
 2. Install dependencies:
     ```
     yarn
