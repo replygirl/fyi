@@ -125,6 +125,8 @@ li
   flex-wrap wrap
   *:first-child
     flex 1 1 auto
+  *:not(:last-child)::after
+    content '\00a0\00a0' //non-breaking spaces
 
 .moon
   min-width 24px
