@@ -7,6 +7,7 @@
     "build": "vue-cli-service build"
   },
   "dependencies": {
+    "airtable": "^0.8.1",
     "core-js": "^3.4.4",
     "destyle.css": "^1.0.11",
     "vue": "^2.6.10"
