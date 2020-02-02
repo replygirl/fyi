@@ -92,6 +92,9 @@ li, h6
   border-bottom 0.5px solid var(--color)
   padding 10px 0
 
-li span
-  font-weight bold
+li
+  display flex
+  flex-wrap wrap
+  span
+    flex 1 1 auto
 </style>
