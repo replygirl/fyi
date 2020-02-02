@@ -1,6 +1,8 @@
 <template lang='pug'>
   #app
     header
+      svg.moon(viewBox='0 0 2 2' xmlns='http://www.w3.org/2000/svg')
+        circle(cx='1' cy='1' r='1')
       section
         h1 Imogen Moon
         | she/they
@@ -57,10 +59,12 @@ export default {
 
 :root
   min-height 100%
-  padding 40px
   display flex
   flex-direction column
   justify-content center
+  padding 20px
+  @media (min-width 360px)
+    padding 40px
 
 body, #app
   height 100%
@@ -73,6 +77,18 @@ body, #app
 
 header
   margin-bottom 40px
+  display flex
+  section:first-of-type
+    flex 1
+  section:last-of-type
+    text-align right
+  .moon
+    display none
+    @media (min-width 320px)
+      display initial
+      margin-right 20px
+    @media (min-width 408px)
+      margin-right 40px
 
 main
   display grid
@@ -92,9 +108,18 @@ li, h6
   border-bottom 0.5px solid var(--color)
   padding 10px 0
 
+span
+  display block
+
 li
   display flex
   flex-wrap wrap
   span
     flex 1 1 auto
+
+.moon
+  min-width 24px
+  min-height @min-width
+  circle
+    fill var(--color)
 </style>
