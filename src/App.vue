@@ -43,7 +43,7 @@ export default {
   computed: {
     eras() {
       return this.roles.reduce((eras, { era }) =>
-        eras.includes(era) ? eras: [...eras, era],
+        eras.includes(era) ? eras : [...eras, era],
         []
       )
     },
