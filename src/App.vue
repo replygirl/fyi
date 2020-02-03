@@ -135,6 +135,8 @@ li
 .moon
   min-width 24px
   min-height @min-width
+  width @min-width
+  height @min-width
   circle
     fill var(--color)
 </style>
