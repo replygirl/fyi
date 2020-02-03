@@ -30,6 +30,7 @@
 <script>
 import 'destyle.css'
 import axios from 'axios'
+import heap from '@/vendor/heap'
 
 export default {
   name: 'app',
@@ -48,13 +49,16 @@ export default {
       )
     },
   },
-  async created() {
-    try {
-      const { data: { intro, roles }} = await axios.get('/api/copy')
-      Object.assign(this, { intro, roles })
-    } catch (error) { this.errors.push({ from: 'App/created', ...error }) }
-  },
+  created() { this.fetchCopy() },
+  mounted() { this.initHeap() },
   methods: {
+    async fetchCopy() {
+      try {
+        const { data: { intro, roles }} = await axios.get('/api/copy')
+        Object.assign(this, { intro, roles })
+      } catch (error) { this.errors.push({ from: 'App/created', ...error }) }
+    },
+    initHeap() { (id => id && heap(id))(process.env.VUE_APP_HEAP_APP_ID) },
     rolesFrom(era) { return this.roles.filter(r => r.era===era) }
   }
 }
