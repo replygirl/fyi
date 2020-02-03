@@ -91,6 +91,7 @@ body, #app
 header
   margin-bottom 40px
   display flex
+  align-items center
   section:first-of-type
     flex 1
   section:last-of-type
