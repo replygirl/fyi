@@ -1,30 +1,25 @@
 {
   "name": "fyi",
-  "version": "5.0.2",
+  "version": "0.1.0",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build"
   },
   "dependencies": {
-    "axios": "^0.18.0",
-    "copy-to-clipboard": "^3.0.8",
-    "pug": "^2.0.3",
-    "pug-plain-loader": "^1.0.0",
-    "reset-css": "^4.0.1",
-    "vue": "^2.6.4",
-    "vuex": "^3.1.0"
+    "airtable": "^0.8.1",
+    "axios": "^0.19.2",
+    "core-js": "^3.4.4",
+    "destyle.css": "^1.0.11",
+    "vue": "^2.6.10"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "^3.4.0",
-    "@vue/cli-service": "^3.4.0",
-    "stylus": "^0.54.5",
+    "@vue/cli-plugin-babel": "^4.1.0",
+    "@vue/cli-service": "^4.1.0",
+    "pug": "^2.0.4",
+    "pug-plain-loader": "^1.0.0",
+    "stylus": "^0.54.7",
     "stylus-loader": "^3.0.2",
-    "vue-template-compiler": "^2.6.4"
-  },
-  "browserslist": [
-    "> 1%",
-    "last 2 versions",
-    "not ie <= 8"
-  ]
+    "vue-template-compiler": "^2.6.10"
+  }
 }

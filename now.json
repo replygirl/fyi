@@ -1,0 +1,11 @@
+{
+  "env": {
+    "AIRTABLE_BASE_ID": "@airtable-base-id",
+    "AIRTABLE_API_KEY": "@airtable-api-key"
+  },
+  "build": {
+    "env": {
+      "VUE_APP_HEAP_APP_ID": "@vue-app-heap-app-id"
+    }
+  }
+}
