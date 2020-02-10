@@ -1,7 +1,7 @@
 import Airtable from 'airtable'
 
 Airtable.configure({
-  apiKey: 'key5MhtTJRMNXz3Br',
+  apiKey: process.env.AIRTABLE_API_KEY,
   timeout: 3000
 })
 
