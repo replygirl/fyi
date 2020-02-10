@@ -50,7 +50,7 @@ export default {
     },
   },
   created() { this.fetchCopy() },
-  mounted() { this.initHeap() },
+  mounted() { this.initHeap(process.env.VUE_APP_HEAP_APP_ID) },
   methods: {
     async fetchCopy() {
       try {
