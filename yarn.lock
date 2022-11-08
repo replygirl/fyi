@@ -3386,10 +3386,10 @@ destroy@~1.0.4:
   resolved "https://registry.yarnpkg.com/destroy/-/destroy-1.0.4.tgz#978857442c44749e4206613e37946205826abd80"
   integrity sha1-l4hXRCxEdJ5CBmE+N5RiBYJqvYA=
 
-destyle.css@^1.0.15:
-  version "1.0.15"
-  resolved "https://registry.yarnpkg.com/destyle.css/-/destyle.css-1.0.15.tgz#32cb574ca0fc8d9c89443947f0a11beb6b5081cd"
-  integrity sha512-ZKuiTAf4Ha2/vsJvFk5oqxSNQiA2pPTskg3KJaVZb3fYf2/X2DYuib1rYvOhZr4mkIz+r+DvMlEvI1qxKLZUKg==
+destyle.css@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/destyle.css/-/destyle.css-4.0.0.tgz#fa4843efa058e9977b82dfebdb98bbacdacf80d9"
+  integrity sha512-yE2SpDRZdqfEZRkYSIxSWSuh4Higsm01VinAWC3hny9DDV+NjBARpCEqf6TLDTWka1I7pu4bDJ68aF1WjLPKUw==
 
 detect-node@^2.0.4:
   version "2.0.4"
